@@ -13,7 +13,7 @@ permalink: /about/
     </p>
   </div>
 
-  <div class="prose">
+  <div class="prose" markdown="1">
 
 ## Mission
 
@@ -69,7 +69,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
     </div>
   </div>
 
-  <div class="prose">
+  <div class="prose" markdown="1">
 
 ## Contact
 

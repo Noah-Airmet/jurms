@@ -25,6 +25,12 @@ html {
 
 body {
   background-color: var(--c-bg);
+  background-image:
+    linear-gradient(to bottom, var(--grid-color) 0px, var(--grid-color) 0.5px, transparent 0.5px),
+    linear-gradient(to right, var(--grid-color) 0px, var(--grid-color) 0.5px, transparent 0.5px);
+  background-size: 80px 80px;
+  background-position: center top;
+  background-attachment: fixed;
   color: var(--c-text);
   font-family: var(--f-sans);
   font-size: var(--text-base);
@@ -962,12 +968,24 @@ a.btn--primary {
   .site-nav__link { font-size: var(--text-xs); }
 }
 
+/* Subtle background grid - smaller on mobile */
+@media (max-width: 768px) {
+  body {
+    background-size: 60px 60px;
+  }
+}
+
+/* Utility class for sections that need solid background (no grid) */
+.bg-solid {
+  background-image: none;
+}
+
 /* ------------------------------------------------------------
    PARALLAX SCROLLYTELLING HERO
    ------------------------------------------------------------ */
 
 .parallax-wrapper {
-  background-color: var(--c-bg); /* Use base background */
+  background-color: transparent; /* Allow body grid to show through */
   position: relative;
 }
 
@@ -1080,5 +1098,28 @@ a.btn--primary {
   /* Start fully hidden so GSAP can fade them in */
   opacity: 0; 
   will-change: opacity, transform;
+}
+
+/* Mobile optimizations for parallax */
+@media (max-width: 768px) {
+  .parallax-arch img {
+    height: clamp(300px, 50vh, 500px);
+  }
+  
+  .parallax-content {
+    padding: var(--sp-4);
+  }
+  
+  .parallax-text-block {
+    padding: 0 var(--sp-4);
+  }
+  
+  .parallax-text-block .hero__description {
+    font-size: var(--text-lg) !important;
+  }
+  
+  #hero-text-3 .hero__description {
+    font-size: var(--text-base) !important;
+  }
 }
 

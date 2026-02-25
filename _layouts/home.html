@@ -11,9 +11,9 @@ layout: default
 
       <!-- The arch image that will scale up -->
       <!-- We start it translated down so it sits on the lower half of the screen -->
-      <div class="parallax-arch" id="hero-arch" style="transform: translateY(40vh);">
+      <div class="parallax-arch" id="hero-arch" style="transform: translateY(30vh);">
         <img src="{{ '/assets/images/arch-tall.svg' | relative_url }}" alt="" aria-hidden="true"
-          style="height: clamp(400px, 60vh, 800px);">
+          style="height: clamp(480px, 72vh, 960px);">
       </div>
 
       <!-- Initial Title that fades out during zoom -->
@@ -102,13 +102,20 @@ layout: default
   document.addEventListener("DOMContentLoaded", (event) => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Detect mobile devices
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
     // Create a timeline mapped to the scroll down the .parallax-hero section
-    // Extended pin duration to 4000px to allow for distinct phases including telos definition
+    // Shorter duration on mobile for better UX
+    const scrollDistance = isMobile ? "+=2500" : "+=4000";
+    const archScale = isMobile ? 5 : 10; // Final zoom scale - reduced to show interior panes
+    const archYPercent = isMobile ? 60 : 35; // Move it further down on mobile exit
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#hero-section",
         start: "top top",
-        end: "+=4000",
+        end: scrollDistance,
         pin: true,
         scrub: 1,
         anticipatePin: 1
@@ -127,7 +134,7 @@ layout: default
     }, 0);
 
     tl.to("#hero-arch img", {
-      scale: 16,
+      scale: archScale,
       yPercent: 35, // Adjust centering logic
       duration: 2,
       ease: "power2.inOut"
@@ -152,34 +159,53 @@ layout: default
     // PHASE 2: SEQUENTIAL TEXT REVEAL
     // Wait for zoom to finish, then bring in text blocks one by one
     // Each block fades in, stays for a moment, then fades out as the next arrives
+    // Shorter timings on mobile
+
+    const block1Start = isMobile ? 2.0 : 2.5;
+    const block1End = isMobile ? 3.5 : 4.5;
+    const block2Start = isMobile ? 3.8 : 5.0;
+    const block2End = isMobile ? 5.0 : 6.5;
+    const block3Start = isMobile ? 5.2 : 7.0;
+    const block3End = isMobile ? 6.5 : 9.0;
+    const archFadeEnd = isMobile ? 6.5 : 9.0;
 
     // Block 1
     tl.fromTo("#hero-text-1",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
-      2.5 // Starts after zoom (duration 2) finishes
+      block1Start
     );
-    tl.to("#hero-text-1", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 4.5);
+    tl.to("#hero-text-1", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, block1End);
 
     // Block 2
     tl.fromTo("#hero-text-2",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
-      5.0
+      block2Start
     );
-    tl.to("#hero-text-2", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 6.5);
+    tl.to("#hero-text-2", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, block2End);
 
     // Block 3: Telos definition
     tl.fromTo("#hero-text-3",
       { opacity: 0, y: 30 },
       { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
-      7.0
+      block3Start
     );
+
+    // On mobile, also move the arch down and out of view completely
+    if (isMobile) {
+      tl.to("#hero-arch img", {
+        yPercent: archYPercent,
+        scale: 7, // Continue scaling up (reduced to show interior panes)
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, block3Start);
+    }
 
     // In the final phase of the timeline, block 3 and the arch fade out 
     // to transition cleanly to the "About" section below
-    tl.to("#hero-text-3", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 9.0);
-    tl.to("#hero-arch", { opacity: 0, duration: 1, ease: "power2.inOut" }, 9.0);
+    tl.to("#hero-text-3", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, block3End);
+    tl.to("#hero-arch", { opacity: 0, duration: 1, ease: "power2.inOut" }, archFadeEnd);
 
   });
 </script>

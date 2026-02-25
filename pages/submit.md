@@ -14,7 +14,7 @@ permalink: /submit/
     </p>
   </div>
 
-  <div class="prose">
+  <div class="prose" markdown="1">
 
 ## Who Can Submit
 
