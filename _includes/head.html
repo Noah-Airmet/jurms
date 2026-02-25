@@ -25,6 +25,20 @@
   <!-- Favicon — replace assets/images/favicon.ico with Sid's final logo -->
   <!-- <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}"> -->
 
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="{%- if page.title -%}{{ page.title }} — {{ site.title }}{%- else -%}{{ site.title }} — {{ site.tagline }}{%- endif -%}">
+  <meta property="og:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ '/assets/images/arch-small.svg' | absolute_url }}">
+  <meta property="og:image:alt" content="Telos — Journal of Undergraduate Research in Mormon Studies">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{%- if page.title -%}{{ page.title }} — {{ site.title }}{%- else -%}{{ site.title }} — {{ site.tagline }}{%- endif -%}">
+  <meta name="twitter:description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
+  <meta name="twitter:image" content="{{ '/assets/images/arch-small.svg' | absolute_url }}">
+
   <!-- Jekyll plugins -->
   {% seo %}
   {% feed_meta %}
