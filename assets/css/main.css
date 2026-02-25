@@ -1058,6 +1058,15 @@ a.btn--primary {
   align-items: center;
   gap: var(--sp-2);
   color: var(--c-text-muted);
+}
+
+/* When scroll indicator is inside the title area, position it normally */
+#hero-initial-title .scroll-indicator {
+  position: static;
+  transform: none;
+  left: auto;
+  bottom: auto;
+}
   font-family: var(--f-sans);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-widest);
