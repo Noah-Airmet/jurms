@@ -91,12 +91,25 @@ a:hover { color: var(--c-accent-hover); }
 
 .site-logo {
   display: flex;
-  flex-direction: column;
-  gap: 1px;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-3);
   text-decoration: none;
   color: inherit;
 }
 .site-logo:hover { text-decoration: none; color: inherit; }
+
+.site-logo__icon {
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.site-logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
 
 .site-logo__wordmark {
   font-family: var(--f-serif);
@@ -226,6 +239,33 @@ a:hover { color: var(--c-accent-hover); }
 .hero {
   padding: var(--sp-24) 0 var(--sp-16);
   border-bottom: var(--border-width) solid var(--c-border);
+  overflow: hidden;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-12);
+}
+
+.hero__content {
+  min-width: 0;
+}
+
+.hero__logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+.hero__logo img {
+  height: clamp(220px, 28vw, 380px);
+  width: auto;
+  display: block;
+  /* Bleed slightly into the bottom border for visual drama */
+  margin-bottom: calc(-1 * var(--sp-16));
 }
 
 .hero__eyebrow {
@@ -899,8 +939,11 @@ a:hover { color: var(--c-accent-hover); }
   }
 
   .site-logo__subtitle { display: none; }
+  .site-logo__icon { height: 28px; }
 
   .hero { padding: var(--sp-16) 0 var(--sp-10); }
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__logo { display: none; }
 
   .issue-card {
     grid-template-columns: 1fr;

@@ -9,8 +9,8 @@ description: >-
   rigorous, faith-engaged scholarship on Latter-day Saint doctrine,
   history, and culture.
 
-url:     ""      # set to https://yourusername.github.io once deployed
-baseurl: ""      # set to /jurms if hosting at username.github.io/jurms
+url:     "https://noah-airmet.github.io"
+baseurl: "/jurms"
 
 # Build settings
 markdown:   kramdown

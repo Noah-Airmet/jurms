@@ -2,14 +2,14 @@
   <div class="site-header__inner">
 
     <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="{{ site.title }} — home">
-      <span class="site-logo__wordmark">JURMS</span>
-      <span class="site-logo__subtitle">{{ site.tagline }}</span>
+      <img src="{{ '/assets/images/arch-small.png' | relative_url }}"
+           alt="" aria-hidden="true"
+           class="site-logo__icon">
+      <div class="site-logo__text">
+        <span class="site-logo__wordmark">JURMS</span>
+        <span class="site-logo__subtitle">{{ site.tagline }}</span>
+      </div>
     </a>
-
-    <!-- Sid: swap this text-wordmark for an SVG logo once the logo is finalized.
-         Place the SVG at assets/images/logo.svg and use:
-         <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="JURMS" height="28">
-    -->
 
     <nav class="site-nav" aria-label="Main navigation">
       <a href="{{ '/about/' | relative_url }}"
