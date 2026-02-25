@@ -753,6 +753,29 @@ a:hover { color: var(--c-accent-hover); }
   color: var(--c-text-faint);
 }
 
+/* Upcoming issue badge and styling */
+.issue-thumb__badge {
+  display: inline-block;
+  background-color: var(--c-accent-tint);
+  color: var(--c-accent);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+
+.issue-thumb--upcoming {
+  border-style: dashed;
+  background-color: var(--c-surface-alt);
+}
+
+.issue-thumb--upcoming:hover {
+  border-color: var(--c-accent);
+}
+
 
 /* ------------------------------------------------------------
    GENERIC PAGE LAYOUT (About, Submit, etc.)
@@ -1114,15 +1137,19 @@ a.btn--primary {
   .parallax-arch img {
     height: clamp(300px, 50vh, 500px);
   }
-  
+
   .parallax-content {
     padding: var(--sp-4);
   }
-  
+
+  #hero-initial-title .scroll-indicator {
+    margin-top: var(--sp-6) !important;
+  }
+
   .parallax-text-block {
     padding: 0 var(--sp-4);
   }
-  
+
   .parallax-text-block .hero__description {
     font-size: var(--text-lg) !important;
   }

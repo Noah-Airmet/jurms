@@ -16,8 +16,9 @@ permalink: /issues/
   {% if all_issues.size > 0 %}
     <div class="issues-grid">
       {% for issue in all_issues %}
-        <a href="{{ issue.url | relative_url }}" class="issue-thumb">
+        <a href="{{ issue.url | relative_url }}" class="issue-thumb{% if issue.upcoming %} issue-thumb--upcoming{% endif %}">
           <p class="issue-thumb__meta">
+            {% if issue.upcoming %}<span class="issue-thumb__badge">Upcoming</span>&ensp;&middot;&ensp;{% endif %}
             Vol.&thinsp;{{ issue.volume }}, No.&thinsp;{{ issue.number }}
             &ensp;&middot;&ensp;
             {{ issue.date | date: "%B %Y" }}
@@ -28,7 +29,11 @@ permalink: /issues/
           {% endif %}
           {% assign issue_articles = site.articles | where: "issue", issue.issue_id %}
           <p class="issue-thumb__count">
-            {{ issue_articles.size }} article{% if issue_articles.size != 1 %}s{% endif %}
+            {% if issue.upcoming %}
+              Coming {{ issue.date | date: "%B %Y" }}
+            {% else %}
+              {{ issue_articles.size }} article{% if issue_articles.size != 1 %}s{% endif %}
+            {% endif %}
           </p>
         </a>
       {% endfor %}
