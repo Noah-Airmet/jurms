@@ -1,12 +1,12 @@
-# JURMS
+# Telos
 **Journal of Undergraduate Research in Mormon Studies**
-Brigham Young University · Est. 2025
+Est. 2025
 
 ---
 
 ## What This Repo Is
 
-This repo is the source for the JURMS website. It's a [Jekyll](https://jekyllrb.com/)
+This repo is the source for the Telos website. It's a [Jekyll](https://jekyllrb.com/)
 static site that deploys automatically to GitHub Pages on every push to `main`.
 
 The site lives at: `https://[your-github-username].github.io/jurms`
@@ -189,7 +189,7 @@ ISSN registration more gracefully.
 ## Getting an ISSN
 
 An ISSN is a free identifier for serial publications (journals, magazines). It gives
-JURMS credibility and makes it citable. Apply at:
+Telos credibility and makes it citable. Apply at:
 - US: `https://www.loc.gov/issn/` (Library of Congress, free)
 - Takes 2–4 weeks
 - You'll want one ISSN for the print edition and a separate one for online

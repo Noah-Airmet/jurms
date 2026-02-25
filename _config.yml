@@ -1,13 +1,12 @@
 # ============================================================
-# JURMS — Jekyll Configuration
+# Telos — Jekyll Configuration
 # ============================================================
 
-title:       JURMS
+title:       Telos
 tagline:     Journal of Undergraduate Research in Mormon Studies
 description: >-
-  A student-run undergraduate journal at Brigham Young University for
-  rigorous, faith-engaged scholarship on Latter-day Saint doctrine,
-  history, and culture.
+  A student-run undergraduate journal for rigorous, faith-engaged
+  scholarship on Latter-day Saint doctrine, history, and culture.
 
 url:     "https://noah-airmet.github.io"
 baseurl: "/jurms"
@@ -59,7 +58,7 @@ journal:
   volume_current: 1
   issue_current:  1
   year_founded:   2025
-  institution:    Brigham Young University
+  institution:    ""
   contact:        ""          # add your email here
 
 # Exclude from build

@@ -2,95 +2,184 @@
 layout: default
 ---
 
-<!-- Hero / Masthead -->
-<section class="hero">
-  <div class="container hero__inner">
-    <div class="hero__content">
-      <p class="hero__eyebrow">{{ site.journal.institution }}</p>
-      <h1 class="hero__title">JURMS</h1>
-      <p class="hero__subtitle">{{ site.tagline }}</p>
-      <p class="hero__description">{{ content | strip_html | truncatewords: 40 }}</p>
-    </div>
-    <div class="hero__logo" aria-hidden="true">
-      <img src="{{ '/assets/images/arch-tall.png' | relative_url }}" alt="">
-    </div>
-  </div>
-</section>
+<!-- Scrollytelling Hero Container -->
+<div class="parallax-wrapper">
 
-<!-- Latest Issue -->
-{% assign sorted_issues = site.issues | sort: 'date' | reverse %}
-{% assign latest = sorted_issues | first %}
+  <section class="parallax-hero" id="hero-section">
+    <!-- Sticky container that holds the animated elements -->
+    <div class="parallax-sticky" id="hero-sticky">
 
-{% if latest %}
-<section class="featured-issue">
-  <div class="container">
-
-    <div class="section-header">
-      <span class="section-header__title">Latest Issue</span>
-      <a href="{{ '/issues/' | relative_url }}" class="section-header__link">All issues →</a>
-    </div>
-
-    <div class="issue-card">
-      <div>
-        <p class="issue-card__meta">
-          Vol.&thinsp;{{ latest.volume }}, No.&thinsp;{{ latest.number }}
-          &ensp;&middot;&ensp;
-          {{ latest.date | date: "%B %Y" }}
-        </p>
-        <h2 class="issue-card__title">{{ latest.title }}</h2>
-        {% if latest.theme %}
-          <p class="issue-card__theme">&ldquo;{{ latest.theme }}&rdquo;</p>
-        {% endif %}
-        {% if latest.description %}
-          <p class="issue-card__description">{{ latest.description }}</p>
-        {% endif %}
-        <a href="{{ latest.url | relative_url }}" class="btn btn--primary">Read Issue</a>
+      <!-- The arch image that will scale up -->
+      <!-- We start it translated down so it sits on the lower half of the screen -->
+      <div class="parallax-arch" id="hero-arch" style="transform: translateY(40vh);">
+        <img src="{{ '/assets/images/arch-tall.svg' | relative_url }}" alt="" aria-hidden="true"
+          style="height: clamp(400px, 60vh, 800px);">
       </div>
 
-      <div>
-        {% assign issue_articles = site.articles | where: "issue", latest.issue_id | sort: "order" %}
-        {% if issue_articles.size > 0 %}
-        <ul class="article-list">
-          {% for article in issue_articles %}
-          <li class="article-list__item">
-            {% if article.type %}<p class="article-list__label">{{ article.type }}</p>{% endif %}
-            <p class="article-list__title">
-              <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
-            </p>
-            <p class="article-list__byline">
-              {{ article.author }}{% if article.affiliation %}&ensp;&middot;&ensp;{{ article.affiliation }}{% endif %}
-            </p>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
+      <!-- Initial Title that fades out during zoom -->
+      <!-- We start it translated up so it sits on the upper half of the screen -->
+      <div class="parallax-content" id="hero-initial-title" style="transform: translateY(-20vh);">
+        <h1 class="hero__title" style="font-size: var(--text-6xl); margin-bottom: var(--sp-2);">Telos</h1>
       </div>
+
+      <!-- Sequential Text Blocks (hidden initially, revealed inside the zoomed arch) -->
+      <div class="parallax-text-sequence">
+
+        <!-- Block 1: Description (first half) -->
+        <div class="parallax-text-block" id="hero-text-1">
+          <p class="hero__description"
+            style="font-family: var(--f-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance;">
+            A student-run undergraduate journal at Brigham Young University...
+          </p>
+        </div>
+
+        <!-- Block 2: Description (second half) -->
+        <div class="parallax-text-block" id="hero-text-2">
+          <p class="hero__description"
+            style="font-family: var(--f-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance;">
+            ...for rigorous, faith-engaged scholarship on Latter-day Saint doctrine, history, and culture.
+          </p>
+        </div>
+
+        <!-- Block 3: Telos definition -->
+        <div class="parallax-text-block" id="hero-text-3">
+          <p class="hero__description"
+            style="font-family: var(--f-serif); font-size: var(--text-xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance; color: var(--c-text-muted);">
+            <em>Telos</em> (Greek: τέλος): the ultimate aim, the final cause, the purpose toward which all things move.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator" id="scroll-indicator" style="font-size: var(--text-xs); font-style: italic; letter-spacing: 0.1em;">
+        <span>Scroll to explore</span>
+        <div class="scroll-arrow" style="font-size: var(--text-sm); font-style: normal;">↓</div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
-{% endif %}
+</div>
 
-<!-- About blurb -->
-<section style="padding: var(--sp-16) 0;">
+<!-- About blurb (Reveals after parallax) -->
+<section class="home-about-section" id="about-section"
+  style="padding: var(--sp-32) 0 var(--sp-24); background-color: var(--c-bg); position: relative; z-index: 10;">
   <div class="container">
-    <div class="section-header">
-      <span class="section-header__title">About the Journal</span>
-      <a href="{{ '/about/' | relative_url }}" class="section-header__link">More →</a>
+    <div class="section-header" style="justify-content: center; margin-bottom: var(--sp-12);">
+      <span class="section-header__title" style="font-size: var(--text-2xl);">About the Journal</span>
     </div>
-    <div class="prose" style="max-width: var(--container-narrow);">
+    <div class="prose"
+      style="max-width: var(--container-narrow); margin: 0 auto; text-align: center; font-size: var(--text-lg); line-height: var(--leading-relaxed);">
       <p>
-        JURMS is an informal, self-published undergraduate journal at Brigham Young University.
+        Telos is an informal, self-published undergraduate journal.
         We write seriously about questions that matter to us — doctrine, history, philosophy,
         and the life of faith — for readers who share the tradition.
       </p>
-      <p>
+      <p style="margin-top: var(--sp-6);">
         We are not peer-reviewed. We believe the best undergraduate scholarship happens when
         students write for each other.
       </p>
-      <a href="{{ '/about/' | relative_url }}" class="btn btn--outline" style="margin-top: var(--sp-2);">
-        Meet the editors
-      </a>
+      <div style="margin-top: var(--sp-10); display: flex; gap: var(--sp-4); justify-content: center;">
+        <a href="{{ '/issues/' | relative_url }}" class="btn btn--primary"
+          style="font-size: var(--text-base); padding: var(--sp-3) var(--sp-6);">
+          Read the Issues
+        </a>
+        <a href="{{ '/about/' | relative_url }}" class="btn btn--outline"
+          style="font-size: var(--text-base); padding: var(--sp-3) var(--sp-6);">
+          Meet the Editors
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- Include GSAP Core and ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", (event) => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Create a timeline mapped to the scroll down the .parallax-hero section
+    // Extended pin duration to 4000px to allow for distinct phases including telos definition
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#hero-section",
+        start: "top top",
+        end: "+=4000",
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1
+      }
+    });
+
+    // Fade out the scroll indicator immediately
+    tl.to("#scroll-indicator", { opacity: 0, y: 20, duration: 0.5, ease: "power1.inOut" }, 0);
+
+    // PHASE 1: ZOOM AND CENTER ARCH, FADE TITLE
+    // Move the arch up to center and scale it up to frame the screen
+    tl.to("#hero-arch", {
+      y: 0, // Reset the 40vh initial offset
+      duration: 2,
+      ease: "power2.inOut"
+    }, 0);
+
+    tl.to("#hero-arch img", {
+      scale: 16,
+      yPercent: 35, // Adjust centering logic
+      duration: 2,
+      ease: "power2.inOut"
+    }, 0);
+
+    // Move the initial text further up and fade out
+    tl.to("#hero-initial-title", {
+      y: -400,
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.5,
+      ease: "power2.in"
+    }, 0);
+
+    // Dim the background subtly inside the arch to make reading easier
+    tl.to("#hero-sticky", {
+      backgroundColor: "var(--c-surface-alt)",
+      duration: 2,
+      ease: "none"
+    }, 0);
+
+    // PHASE 2: SEQUENTIAL TEXT REVEAL
+    // Wait for zoom to finish, then bring in text blocks one by one
+    // Each block fades in, stays for a moment, then fades out as the next arrives
+
+    // Block 1
+    tl.fromTo("#hero-text-1",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      2.5 // Starts after zoom (duration 2) finishes
+    );
+    tl.to("#hero-text-1", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 4.5);
+
+    // Block 2
+    tl.fromTo("#hero-text-2",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      5.0
+    );
+    tl.to("#hero-text-2", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 6.5);
+
+    // Block 3: Telos definition
+    tl.fromTo("#hero-text-3",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      7.0
+    );
+
+    // In the final phase of the timeline, block 3 and the arch fade out 
+    // to transition cleanly to the "About" section below
+    tl.to("#hero-text-3", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, 9.0);
+    tl.to("#hero-arch", { opacity: 0, duration: 1, ease: "power2.inOut" }, 9.0);
+
+  });
+</script>

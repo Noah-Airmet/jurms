@@ -1,4 +1,4 @@
-# JURMS Design System
+# Telos Design System
 
 **For Sid.** This document is your entry point into the repo. It covers the design
 philosophy, all tokens, and how to make changes without breaking things.
@@ -100,7 +100,7 @@ This is pure text — easy to replace.
 2. Also save `assets/images/favicon.ico` (or a 32×32 PNG)
 3. In `_includes/header.html`, replace the text wordmark block with:
    ```html
-   <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="JURMS" height="28">
+   <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="Telos" height="28">
    ```
 4. Uncomment the favicon `<link>` in `_includes/head.html`
 
@@ -118,7 +118,7 @@ underline on hover/active (not background highlight). The subtitle text below th
 wordmark hides on mobile.
 
 ### `.hero` (homepage only)
-Full-width top section: BYU eyebrow → large serif JURMS title → subtitle → description.
+Full-width top section: large serif Telos title → subtitle → description.
 Uses `clamp()` so the title scales fluidly on different screen sizes.
 
 ### `.section-header`
@@ -201,7 +201,7 @@ _layouts/
 
 | Element | Font | Size | Weight | Tracking |
 |---|---|---|---|---|
-| Masthead (JURMS) | Lora | clamp 36–60px | Bold | −0.025em |
+| Masthead (Telos) | Lora | clamp 36–60px | Bold | −0.025em |
 | Issue/article title | Lora | clamp 30–48px | Bold | −0.025em |
 | Article subtitle | Lora Italic | 20px | Normal | — |
 | Body prose (article) | Lora | 18px | Normal | — |

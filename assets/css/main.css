@@ -1,5 +1,5 @@
 /* ============================================================
-   JURMS — Main Stylesheet
+   Telos — Main Stylesheet
    Consumes design tokens from tokens.css (loaded first in head.html).
    Sid: for cosmetic changes, edit tokens.css first. Only touch
    this file when you need to change layout structure or add
@@ -871,12 +871,16 @@ a:hover { color: var(--c-accent-hover); }
 }
 .btn--primary {
   background-color: var(--c-accent);
-  color: white;
+  color: var(--c-surface); /* white */
 }
 .btn--primary:hover {
   background-color: var(--c-accent-hover);
-  color: white;
+  color: var(--c-surface);
   text-decoration: none;
+}
+/* Ensure links don't override the button text color */
+a.btn--primary {
+  color: var(--c-surface);
 }
 .btn--outline {
   border-color: var(--c-border);
@@ -957,3 +961,124 @@ a:hover { color: var(--c-accent-hover); }
   .site-nav { gap: var(--sp-4); }
   .site-nav__link { font-size: var(--text-xs); }
 }
+
+/* ------------------------------------------------------------
+   PARALLAX SCROLLYTELLING HERO
+   ------------------------------------------------------------ */
+
+.parallax-wrapper {
+  background-color: var(--c-bg); /* Use base background */
+  position: relative;
+}
+
+.parallax-hero {
+  /* Height is managed by ScrollTrigger pinning, just needs to comfortably cover screen initially */
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-sticky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Background/Arch container */
+.parallax-arch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.parallax-arch img {
+  /* Ensure it fills vertically nicely so we can pass through it */
+  height: clamp(500px, 80vh, 1000px);
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Content container */
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  /* Add subtle background blur behind text for legibility if needed */
+  /* background: rgba(248, 244, 239, 0.4); 
+     backdrop-filter: blur(4px);
+     border-radius: var(--radius-lg); */
+  padding: var(--sp-8);
+  will-change: transform, opacity;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--sp-10);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--c-text-muted);
+  font-family: var(--f-sans);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  will-change: opacity, transform;
+}
+
+.scroll-arrow {
+  font-size: var(--text-base);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+
+/* Classes for sequential text blocks */
+.parallax-text-sequence {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.parallax-text-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 var(--sp-6);
+  text-align: center;
+  /* Start fully hidden so GSAP can fade them in */
+  opacity: 0; 
+  will-change: opacity, transform;
+}
+

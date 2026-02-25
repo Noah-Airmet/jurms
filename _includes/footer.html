@@ -1,8 +1,8 @@
 <footer class="site-footer" role="contentinfo">
   <div class="container site-footer__inner">
-    <span class="site-footer__name">JURMS</span>
+    <span class="site-footer__name">Telos</span>
     <span class="site-footer__meta">
-      {{ site.tagline }}&ensp;&middot;&ensp;{{ site.journal.institution }}&ensp;&middot;&ensp;Est. {{ site.journal.year_founded }}
+      {{ site.tagline }}&ensp;&middot;&ensp;Est. {{ site.journal.year_founded }}
     </span>
     <nav class="site-footer__links" aria-label="Footer navigation">
       <a href="{{ '/about/'  | relative_url }}">About</a>
@@ -12,9 +12,12 @@
       <a href="{{ '/submit/' | relative_url }}">Submit</a>
     </nav>
     <span class="site-footer__meta">
-      &copy; {{ 'now' | date: '%Y' }} JURMS contributors. Content published under
+      &copy; {{ 'now' | date: '%Y' }} Telos contributors. Content published under
       <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener"
          style="color: inherit;">CC BY 4.0</a>.
+    </span>
+    <span class="site-footer__meta" style="font-size: var(--text-xs); color: var(--c-text-faint); margin-top: var(--sp-2);">
+      Not affiliated with The Church of Jesus Christ of Latter-day Saints.
     </span>
   </div>
 </footer>

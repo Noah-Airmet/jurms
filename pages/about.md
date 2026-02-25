@@ -7,9 +7,9 @@ permalink: /about/
 <div class="container--narrow" style="margin: 0 auto; padding-left: var(--sp-6); padding-right: var(--sp-6);">
 
   <div class="page-header">
-    <h1 class="page-header__title">About JURMS</h1>
+    <h1 class="page-header__title">About Telos</h1>
     <p class="page-header__lead">
-      A student-run space for faith-engaged undergraduate scholarship at Brigham Young University.
+      A student-run space for faith-engaged undergraduate scholarship.
     </p>
   </div>
 
@@ -17,8 +17,8 @@ permalink: /about/
 
 ## Mission
 
-JURMS — the Journal of Undergraduate Research in Mormon Studies — was founded in 2025 by a
-group of BYU undergraduates who wanted a venue for serious, faith-engaged engagement with
+Telos — the Journal of Undergraduate Research in Mormon Studies — was founded in 2025 by a
+group of undergraduates who wanted a venue for serious, faith-engaged engagement with
 questions of Latter-day Saint doctrine, history, and culture. We write at the undergraduate
 level, for readers who share the tradition.
 

@@ -9,7 +9,7 @@ permalink: /submit/
   <div class="page-header">
     <h1 class="page-header__title">Submit a Piece</h1>
     <p class="page-header__lead">
-      We welcome original undergraduate scholarship from BYU students on any topic in
+      We welcome original undergraduate scholarship on any topic in
       Latter-day Saint studies.
     </p>
   </div>
@@ -18,7 +18,7 @@ permalink: /submit/
 
 ## Who Can Submit
 
-Any current BYU undergraduate. You do not need to be an editor or affiliated with the
+Any current undergraduate. You do not need to be an editor or affiliated with the
 journal to submit. Faculty co-authorship is permitted but submissions should be substantially
 student-driven.
 
@@ -33,7 +33,7 @@ history, or culture. This is our most common format.
 thesis, engagement with secondary sources, and footnotes.
 
 **Response Pieces** (1,000–2,500 words) — direct engagement with a previously published
-JURMS article, or with a significant outside work.
+Telos article, or with a significant outside work.
 
 **Translations** — translations of primary-source material relevant to Latter-day Saint
 studies, with a short introduction.

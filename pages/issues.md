@@ -8,7 +8,7 @@ permalink: /issues/
 
   <div class="page-header">
     <h1 class="page-header__title">Issues</h1>
-    <p class="page-header__lead">Browse all published issues of JURMS.</p>
+    <p class="page-header__lead">Browse all published issues of Telos.</p>
   </div>
 
   {% assign all_issues = site.issues | sort: 'date' | reverse %}
