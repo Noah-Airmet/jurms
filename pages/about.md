@@ -73,7 +73,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
 
 ## Contact
 
-Interested in submitting a piece? See our [submission guidelines](/submit/).
+Interested in submitting a piece? See our [submission guidelines]({{ '/submit/' | relative_url }}).
 
 For everything else, reach us at [your email here].
 

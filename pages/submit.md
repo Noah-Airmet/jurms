@@ -53,7 +53,7 @@ We do not require a specific style guide beyond Chicago for citations. Write cle
 ## Topics
 
 We are organized around thematic issues. Current and upcoming themes are listed on the
-[issues page](/issues/). We will consider pieces submitted outside a current theme for
+[issues page]({{ '/issues/' | relative_url }}). We will consider pieces submitted outside a current theme for
 future issues.
 
 ## Process
