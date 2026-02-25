@@ -1,0 +1,91 @@
+---
+layout: default
+---
+
+<!-- Hero / Masthead -->
+<section class="hero">
+  <div class="container">
+    <p class="hero__eyebrow">{{ site.journal.institution }}</p>
+    <h1 class="hero__title">JURMS</h1>
+    <p class="hero__subtitle">{{ site.tagline }}</p>
+    <p class="hero__description">{{ content | strip_html | truncatewords: 40 }}</p>
+  </div>
+</section>
+
+<!-- Latest Issue -->
+{% assign sorted_issues = site.issues | sort: 'date' | reverse %}
+{% assign latest = sorted_issues | first %}
+
+{% if latest %}
+<section class="featured-issue">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-header__title">Latest Issue</span>
+      <a href="{{ '/issues/' | relative_url }}" class="section-header__link">All issues →</a>
+    </div>
+
+    <div class="issue-card">
+      <div>
+        <p class="issue-card__meta">
+          Vol.&thinsp;{{ latest.volume }}, No.&thinsp;{{ latest.number }}
+          &ensp;&middot;&ensp;
+          {{ latest.date | date: "%B %Y" }}
+        </p>
+        <h2 class="issue-card__title">{{ latest.title }}</h2>
+        {% if latest.theme %}
+          <p class="issue-card__theme">&ldquo;{{ latest.theme }}&rdquo;</p>
+        {% endif %}
+        {% if latest.description %}
+          <p class="issue-card__description">{{ latest.description }}</p>
+        {% endif %}
+        <a href="{{ latest.url | relative_url }}" class="btn btn--primary">Read Issue</a>
+      </div>
+
+      <div>
+        {% assign issue_articles = site.articles | where: "issue", latest.issue_id | sort: "order" %}
+        {% if issue_articles.size > 0 %}
+        <ul class="article-list">
+          {% for article in issue_articles %}
+          <li class="article-list__item">
+            {% if article.type %}<p class="article-list__label">{{ article.type }}</p>{% endif %}
+            <p class="article-list__title">
+              <a href="{{ article.url | relative_url }}">{{ article.title }}</a>
+            </p>
+            <p class="article-list__byline">
+              {{ article.author }}{% if article.affiliation %}&ensp;&middot;&ensp;{{ article.affiliation }}{% endif %}
+            </p>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+<!-- About blurb -->
+<section style="padding: var(--sp-16) 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-header__title">About the Journal</span>
+      <a href="{{ '/about/' | relative_url }}" class="section-header__link">More →</a>
+    </div>
+    <div class="prose" style="max-width: var(--container-narrow);">
+      <p>
+        JURMS is an informal, self-published undergraduate journal at Brigham Young University.
+        We write seriously about questions that matter to us — doctrine, history, philosophy,
+        and the life of faith — for readers who share the tradition.
+      </p>
+      <p>
+        We are not peer-reviewed. We believe the best undergraduate scholarship happens when
+        students write for each other.
+      </p>
+      <a href="{{ '/about/' | relative_url }}" class="btn btn--outline" style="margin-top: var(--sp-2);">
+        Meet the editors
+      </a>
+    </div>
+  </div>
+</section>

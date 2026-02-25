@@ -1,0 +1,31 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {%- if page.title -%}
+      {{ page.title }} — {{ site.title }}
+    {%- else -%}
+      {{ site.title }} — {{ site.tagline }}
+    {%- endif -%}
+  </title>
+
+  <meta name="description" content="{%- if page.description -%}{{ page.description }}{%- else -%}{{ site.description }}{%- endif -%}">
+
+  <!-- Fonts: Lora (serif) + Inter (sans) via Google Fonts -->
+  <!-- Sid: to swap fonts, change the href below and update --f-serif / --f-sans in tokens.css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- Design tokens must be loaded before main stylesheet -->
+  <link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- Favicon — replace assets/images/favicon.ico with Sid's final logo -->
+  <!-- <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}"> -->
+
+  <!-- Jekyll plugins -->
+  {% seo %}
+  {% feed_meta %}
+</head>

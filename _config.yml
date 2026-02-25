@@ -1,0 +1,73 @@
+# ============================================================
+# JURMS — Jekyll Configuration
+# ============================================================
+
+title:       JURMS
+tagline:     Journal of Undergraduate Research in Mormon Studies
+description: >-
+  A student-run undergraduate journal at Brigham Young University for
+  rigorous, faith-engaged scholarship on Latter-day Saint doctrine,
+  history, and culture.
+
+url:     ""      # set to https://yourusername.github.io once deployed
+baseurl: ""      # set to /jurms if hosting at username.github.io/jurms
+
+# Build settings
+markdown:   kramdown
+highlighter: rouge
+permalink:  pretty
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+# Collections
+collections:
+  issues:
+    output: true
+    permalink: /issues/:name/
+  articles:
+    output: true
+    permalink: /articles/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "articles"
+    values:
+      layout: "article"
+  - scope:
+      path: ""
+      type: "issues"
+    values:
+      layout: "issue"
+  - scope:
+      path: "pages"
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Journal metadata (used in footer, about page, etc.)
+journal:
+  volume_current: 1
+  issue_current:  1
+  year_founded:   2025
+  institution:    Brigham Young University
+  contact:        ""          # add your email here
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
+  - DESIGN.md
+  - "*.sh"

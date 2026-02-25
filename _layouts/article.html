@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<div class="container--narrow" style="margin: 0 auto; padding-left: var(--sp-6); padding-right: var(--sp-6);">
+
+  <header class="article-header">
+
+    <!-- Back link to parent issue -->
+    {% if page.issue %}
+      {% assign parent_issue = site.issues | where: "issue_id", page.issue | first %}
+      {% if parent_issue %}
+      <a href="{{ parent_issue.url | relative_url }}" class="article-header__back">
+        ← {{ parent_issue.title }}, Vol.&thinsp;{{ parent_issue.volume }} No.&thinsp;{{ parent_issue.number }}
+      </a>
+      {% endif %}
+    {% endif %}
+
+    <h1 class="article-header__title">{{ page.title }}</h1>
+
+    {% if page.subtitle %}
+      <p class="article-header__subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+
+    <div class="article-header__byline">
+      <span class="article-header__author">{{ page.author }}</span>
+      {% if page.affiliation %}
+        <span class="article-header__sep">&middot;</span>
+        <span class="article-header__affil">{{ page.affiliation }}</span>
+      {% endif %}
+      <span class="article-header__sep">&middot;</span>
+      <span class="article-header__date">{{ page.date | date: "%B %Y" }}</span>
+    </div>
+
+    <!-- PDF download (show if pdf_url is set in front matter) -->
+    {% if page.pdf_url %}
+    <a href="{{ page.pdf_url }}" class="article-download" target="_blank" rel="noopener">
+      ↓ &thinsp;Download PDF
+    </a>
+    {% endif %}
+
+  </header>
+
+  <!-- Abstract -->
+  {% if page.abstract %}
+  <div class="article-abstract">
+    <p class="article-abstract__label">Abstract</p>
+    <p class="article-abstract__text">{{ page.abstract }}</p>
+  </div>
+  {% endif %}
+
+  <!-- Body: PDF embed OR rendered Markdown -->
+  {% if page.content_type == "pdf" and page.pdf_url %}
+
+    <object class="pdf-embed" data="{{ page.pdf_url }}" type="application/pdf">
+      <div class="pdf-fallback">
+        <p style="font-size: var(--text-sm); color: var(--c-text-muted); margin-bottom: var(--sp-4);">
+          Your browser doesn&rsquo;t support inline PDFs.
+        </p>
+        <a href="{{ page.pdf_url }}" class="btn btn--outline" target="_blank" rel="noopener">
+          Download PDF
+        </a>
+      </div>
+    </object>
+
+  {% else %}
+
+    <article class="article-body">
+      {{ content }}
+    </article>
+
+  {% endif %}
+
+  <!-- Tags -->
+  {% if page.tags and page.tags.size > 0 %}
+  <div style="margin-top: var(--sp-12); padding-top: var(--sp-6); border-top: 1px solid var(--c-border-light); display: flex; gap: var(--sp-2); flex-wrap: wrap;">
+    {% for tag in page.tags %}
+      <span class="tag tag--default">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+</div>
