@@ -57,7 +57,7 @@ plugins:
 journal:
   volume_current: 1
   issue_current:  1
-  year_founded:   2025
+  year_founded:   2026
   institution:    ""
   contact:        ""          # add your email here
 
