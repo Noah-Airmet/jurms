@@ -49,7 +49,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
       <div class="team-card">
         <p class="team-card__name">Noah</p>
         <p class="team-card__role">Architecture</p>
-        <p class="team-card__bio">Update in pages/about.md.</p>
+        <p class="team-card__bio">Interests: patristics, psychology, epistemology.</p>
       </div>
       <div class="team-card">
         <p class="team-card__name">Cade</p>
