@@ -1,20 +1,8 @@
 ---
-layout: default
+layout: submit
 title: Submit
 permalink: /submit/
 ---
-
-<div class="container--narrow" style="margin: 0 auto; padding-left: var(--sp-6); padding-right: var(--sp-6);">
-
-  <div class="page-header">
-    <h1 class="page-header__title">Submit a Piece</h1>
-    <p class="page-header__lead">
-      We welcome original undergraduate scholarship on any topic in
-      Latter-day Saint studies.
-    </p>
-  </div>
-
-  <div class="prose" markdown="1">
 
 ## Who Can Submit
 
@@ -73,7 +61,3 @@ Email your submission to **[journal email]** with the subject line:
 `Submission — [Title] — [Your Name]`
 
 Include a one-sentence bio for the contributors page.
-
-  </div>
-
-</div>

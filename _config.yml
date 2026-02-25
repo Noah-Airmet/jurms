@@ -29,6 +29,9 @@ collections:
   articles:
     output: true
     permalink: /articles/:name/
+  board_posts:
+    output: true
+    permalink: /forum/:name/
 
 # Default front matter
 defaults:
@@ -42,6 +45,11 @@ defaults:
       type: "issues"
     values:
       layout: "issue"
+  - scope:
+      path: ""
+      type: "board_posts"
+    values:
+      layout: "board_post"
   - scope:
       path: "pages"
     values:

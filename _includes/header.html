@@ -20,6 +20,10 @@
          class="site-nav__link{% if page.url contains '/issues' %} active{% endif %}">
         Issues
       </a>
+      <a href="{{ '/forum/' | relative_url }}"
+         class="site-nav__link{% if page.url contains '/forum' %} active{% endif %}">
+        The Forum
+      </a>
       <a href="{{ '/submit/' | relative_url }}"
          class="site-nav__link{% if page.url == '/submit/' %} active{% endif %}">
         Submit

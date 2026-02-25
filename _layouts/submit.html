@@ -1,0 +1,70 @@
+---
+layout: default
+---
+
+<div class="container--narrow submit-page" style="margin: 0 auto; padding-left: var(--sp-6); padding-right: var(--sp-6);">
+
+  <div class="page-header">
+    <h1 class="page-header__title">Submit</h1>
+    <p class="page-header__lead">
+      Choose what you&rsquo;re submitting below. We accept work for the journal and for the Forum.
+    </p>
+  </div>
+
+  <div class="submit-toggle" role="tablist" aria-label="Submission type">
+    <button type="button" class="submit-toggle__btn submit-toggle__btn--active" role="tab" aria-selected="true" aria-controls="panel-journal" id="tab-journal">
+      Journal
+    </button>
+    <button type="button" class="submit-toggle__btn" role="tab" aria-selected="false" aria-controls="panel-board" id="tab-board">
+      The Forum
+    </button>
+  </div>
+
+  <div id="panel-journal" class="submit-panel" role="tabpanel" aria-labelledby="tab-journal">
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+
+  <div id="panel-board" class="submit-panel submit-panel--hidden" role="tabpanel" aria-labelledby="tab-board">
+    {% include submit-board-panel.html %}
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var tabJournal = document.getElementById('tab-journal');
+  var tabBoard = document.getElementById('tab-board');
+  var panelJournal = document.getElementById('panel-journal');
+  var panelBoard = document.getElementById('panel-board');
+  if (!tabJournal || !tabBoard || !panelJournal || !panelBoard) return;
+
+  function showJournal() {
+    tabJournal.classList.add('submit-toggle__btn--active');
+    tabJournal.setAttribute('aria-selected', 'true');
+    tabBoard.classList.remove('submit-toggle__btn--active');
+    tabBoard.setAttribute('aria-selected', 'false');
+    panelJournal.classList.remove('submit-panel--hidden');
+    panelBoard.classList.add('submit-panel--hidden');
+  }
+  function showBoard() {
+    tabBoard.classList.add('submit-toggle__btn--active');
+    tabBoard.setAttribute('aria-selected', 'true');
+    tabJournal.classList.remove('submit-toggle__btn--active');
+    tabJournal.setAttribute('aria-selected', 'false');
+    panelBoard.classList.remove('submit-panel--hidden');
+    panelJournal.classList.add('submit-panel--hidden');
+  }
+
+  tabJournal.addEventListener('click', showJournal);
+  tabBoard.addEventListener('click', showBoard);
+
+  tabJournal.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); tabBoard.focus(); }
+  });
+  tabBoard.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); tabJournal.focus(); }
+  });
+})();
+</script>
