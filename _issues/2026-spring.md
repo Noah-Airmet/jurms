@@ -5,14 +5,15 @@ theme:      "The Doctrine of Doctrine"
 issue_id:   2026-spring
 volume:     1
 number:     1
-date:       2026-05-01
-upcoming:   false
+deadline:        2026-04-30
+publication_date: 2026-05-30
+upcoming:   true
 
 description: >
   How does doctrine work? Our inaugural issue takes up the meta-question underlying all
   doctrinal inquiry: how are theological claims formed, tested, revised, and transmitted
   within the Latter-day Saint tradition? The essays collected here approach this question
-  from philosophy, history, and theology — not to destabilize doctrine, but to understand
+  from philosophy, history, and theology - not to destabilize doctrine, but to understand
   it more honestly.
 
 # Foreword: fill these in once you have a professor on board.

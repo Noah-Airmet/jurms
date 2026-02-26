@@ -138,7 +138,8 @@ so `bundle install` will install exactly the same versions every time.
    issue_id:  2026-spring        # articles link to this
    volume:    1
    number:    2
-   date:      2026-03-01
+   deadline:        2026-01-15   # when submissions are due
+   publication_date: 2026-03-01  # when the issue goes live
    description: >
      A paragraph describing the issue theme.
    foreword_text:   "Quote from professor foreword (optional)"

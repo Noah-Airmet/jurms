@@ -11,17 +11,18 @@ permalink: /issues/
     <p class="page-header__lead">Browse all published issues of Telos.</p>
   </div>
 
-  {% assign all_issues = site.issues | sort: 'date' | reverse %}
+  {% assign all_issues = site.issues | sort: 'publication_date' | reverse %}
 
   {% if all_issues.size > 0 %}
     <div class="issues-grid">
       {% for issue in all_issues %}
         <a href="{{ issue.url | relative_url }}" class="issue-thumb{% if issue.upcoming %} issue-thumb--upcoming{% endif %}">
+          {% assign pub_date = issue.publication_date | default: issue.date %}
           <p class="issue-thumb__meta">
             {% if issue.upcoming %}<span class="issue-thumb__badge">Upcoming</span>&ensp;&middot;&ensp;{% endif %}
             Vol.&thinsp;{{ issue.volume }}, No.&thinsp;{{ issue.number }}
             &ensp;&middot;&ensp;
-            {{ issue.date | date: "%B %Y" }}
+            {{ pub_date | date: "%B %Y" }}
           </p>
           <p class="issue-thumb__title">{{ issue.title }}</p>
           {% if issue.theme %}
@@ -30,7 +31,11 @@ permalink: /issues/
           {% assign issue_articles = site.articles | where: "issue", issue.issue_id %}
           <p class="issue-thumb__count">
             {% if issue.upcoming %}
-              Coming {{ issue.date | date: "%B %Y" }}
+              {% if issue.deadline %}
+                Papers due {{ issue.deadline | date: "%B %-d, %Y" }}
+              {% else %}
+                Coming {{ pub_date | date: "%B %Y" }}
+              {% endif %}
             {% else %}
               {{ issue_articles.size }} article{% if issue_articles.size != 1 %}s{% endif %}
             {% endif %}
