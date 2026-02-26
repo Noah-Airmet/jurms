@@ -1162,6 +1162,12 @@ a.btn--primary {
     pointer-events: auto;
   }
 
+  .site-nav__link {
+    font-size: var(--text-base);
+    padding-top: var(--sp-1);
+    padding-bottom: var(--sp-1);
+  }
+
   .hero { padding: var(--sp-16) 0 var(--sp-10); }
   .hero__inner { grid-template-columns: 1fr; }
   .hero__logo { display: none; }
@@ -1176,7 +1182,6 @@ a.btn--primary {
 
 @media (max-width: 480px) {
   .site-nav { gap: var(--sp-3); }
-  .site-nav__link { font-size: var(--text-xs); }
 }
 
 /* Subtle background grid - smaller on mobile */
