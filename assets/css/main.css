@@ -140,7 +140,7 @@ a:hover { color: var(--c-accent-hover); }
 }
 
 .site-logo__wordmark {
-  font-family: var(--f-serif);
+  font-family: var(--f-display);
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-wider);
@@ -357,7 +357,7 @@ a:hover { color: var(--c-accent-hover); }
 }
 
 .hero__title {
-  font-family: var(--f-serif);
+  font-family: var(--f-display);
   font-size: clamp(4rem, 10vw, 7.5rem);
   font-weight: var(--weight-normal);
   letter-spacing: var(--tracking-normal);

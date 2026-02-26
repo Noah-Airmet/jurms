@@ -57,13 +57,16 @@
   /* ----------------------------------------------------------
    * TYPOGRAPHY
    * ----------------------------------------------------------
-   * Two-font system: Source Serif 4 (serif) for headings and
-   * article body text; Inter (sans-serif) for all UI chrome.
+   * Three-font system:
+   * - Instrument Serif (display serif) for logo + hero masthead
+   * - Source Serif 4 (reader serif) for article/forum reading text
+   * - Inter (sans-serif) for UI chrome
    *
    * Google Fonts are loaded in _includes/head.html.
    * Change the @link there if you want to swap fonts.
    * ---------------------------------------------------------- */
 
+  --f-display:  'Instrument Serif', Georgia, 'Times New Roman', serif;
   --f-serif:    'Source Serif 4', Georgia, 'Times New Roman', serif;
   --f-sans:     'Inter', system-ui, -apple-system, sans-serif;
 
