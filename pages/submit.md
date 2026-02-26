@@ -37,6 +37,7 @@ Submit as a Google Doc or `.docx` file. Use the following conventions:
 - No anonymous submission — we do not blind-review
 
 We do not require a specific style guide beyond Chicago for citations. Write clearly.
+Accepted submissions are normalized through our editorial ingestion workflow before publication.
 
 ## Topics
 

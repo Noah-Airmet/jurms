@@ -2,15 +2,18 @@
 layout: default
 title: About
 permalink: /about/
+stained_glass: true
 ---
 
 <div class="container--narrow" style="margin: 0 auto; padding-left: var(--sp-6); padding-right: var(--sp-6);">
 
-  <div class="page-header">
+  <div class="about-glass-header about-glass-frame">
+    <div class="page-header">
     <h1 class="page-header__title">About Telos</h1>
     <p class="page-header__lead">
       A student-run space for faith-engaged undergraduate scholarship.
     </p>
+    </div>
   </div>
 
   <div class="prose" markdown="1">
@@ -40,7 +43,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
 
   </div>
 
-  <div style="margin: var(--sp-10) 0;">
+  <div class="about-glass-team about-glass-frame" style="margin: var(--sp-10) 0;">
     <div class="section-header">
       <span class="section-header__title">Editorial Team</span>
     </div>
@@ -69,6 +72,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
     </div>
   </div>
 
+  <div class="about-glass-contact about-glass-frame">
   <div class="prose" markdown="1">
 
 ## Contact
@@ -77,6 +81,7 @@ Interested in submitting a piece? See our [submission guidelines]({{ '/submit/' 
 
 For everything else, reach us at [your email here].
 
+  </div>
   </div>
 
 </div>

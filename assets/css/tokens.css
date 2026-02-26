@@ -57,14 +57,14 @@
   /* ----------------------------------------------------------
    * TYPOGRAPHY
    * ----------------------------------------------------------
-   * Two-font system: Instrument Serif (serif) for headings and
+   * Two-font system: Source Serif 4 (serif) for headings and
    * article body text; Inter (sans-serif) for all UI chrome.
    *
    * Google Fonts are loaded in _includes/head.html.
    * Change the @link there if you want to swap fonts.
    * ---------------------------------------------------------- */
 
-  --f-serif:    'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --f-serif:    'Source Serif 4', Georgia, 'Times New Roman', serif;
   --f-sans:     'Inter', system-ui, -apple-system, sans-serif;
 
   /* Type scale — based on 1rem = 16px root */
@@ -163,5 +163,24 @@
   --transition-fast:   150ms ease;
   --transition-base:   200ms ease;
   --transition-slow:   300ms ease;
+
+  /* ----------------------------------------------------------
+   * STAINED GLASS PILOT (About page only)
+   * ---------------------------------------------------------- */
+
+  --glass-edge-opacity:    0.42;
+  --glass-card-opacity:    0.72;
+  --glass-texture-opacity: 0.08;
+
+  --came-color:            #5C4A3F;
+  --came-highlight:        rgba(255, 246, 226, 0.55);
+  --came-shadow:           rgba(32, 22, 14, 0.28);
+
+  --spot-x:                50vw;
+  --spot-y:                35vh;
+  --spot-size:             420px;
+  --spot-opacity:          0.24;
+  --spot-feather:          72%;
+  --glass-sat-boost:       1.06;
 
 }

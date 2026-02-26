@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include head.html %}
-<body>
+<body{% if page.stained_glass %} data-theme="stained-glass" data-spotlight="off"{% endif %}>
 
   {% include header.html %}
 

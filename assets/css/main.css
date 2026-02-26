@@ -83,6 +83,27 @@ a:hover { color: var(--c-accent-hover); }
   height: var(--header-height);
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+/* Global header bottom came rail (fades toward edges) */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: clamp(140px, 22vw, 360px);
+  right: clamp(140px, 22vw, 360px);
+  bottom: 0;
+  height: 3px;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--came-highlight) 12%,
+    rgba(76, 61, 51, 0.92) 50%,
+    var(--came-highlight) 88%,
+    transparent 100%
+  );
+  opacity: 0.85;
 }
 
 .site-header__inner {
@@ -94,6 +115,7 @@ a:hover { color: var(--c-accent-hover); }
   margin: 0 auto;
   padding: 0 var(--sp-6);
   position: relative;
+  z-index: 1;
 }
 
 .site-logo {
@@ -1031,6 +1053,152 @@ a:hover { color: var(--c-accent-hover); }
 
 
 /* ------------------------------------------------------------
+   STAINED GLASS FRAMEWORK (ABOUT PILOT)
+   ------------------------------------------------------------ */
+
+body[data-theme="stained-glass"] {
+  isolation: isolate;
+}
+
+body[data-theme="stained-glass"] .site-header,
+body[data-theme="stained-glass"] .page-wrap,
+body[data-theme="stained-glass"] .site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+body[data-theme="stained-glass"]::before,
+body[data-theme="stained-glass"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Decorative glass corners around the viewport edge */
+body[data-theme="stained-glass"]::before {
+  z-index: 0;
+  opacity: var(--glass-edge-opacity);
+  filter: saturate(var(--glass-sat-boost));
+  background-image:
+    url('../images/stained-glass/corner-top-left.svg'),
+    url('../images/stained-glass/corner-top-right.svg'),
+    url('../images/stained-glass/corner-bottom-left.svg'),
+    url('../images/stained-glass/corner-bottom-right.svg'),
+    url('../images/stained-glass/glass-grain-overlay.svg');
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  background-position:
+    top left,
+    top right,
+    bottom left,
+    bottom right,
+    center center;
+  background-size:
+    min(30vw, 320px),
+    min(30vw, 320px),
+    min(30vw, 320px),
+    min(30vw, 320px),
+    460px 460px;
+}
+
+/* Cursor-following soft light */
+body[data-theme="stained-glass"]::after {
+  z-index: 1;
+  opacity: var(--spot-opacity);
+  background:
+    radial-gradient(
+      circle var(--spot-size) at var(--spot-x) var(--spot-y),
+      rgba(255, 240, 198, 0.42) 0%,
+      rgba(255, 233, 186, 0.22) var(--spot-feather),
+      rgba(255, 229, 164, 0.08) 78%,
+      rgba(255, 229, 164, 0.00) 100%
+    );
+  mix-blend-mode: multiply;
+  transition: opacity var(--transition-base);
+}
+
+body[data-theme="stained-glass"][data-spotlight="off"]::after {
+  opacity: 0;
+}
+
+.about-glass-frame {
+  position: relative;
+  border: 1px solid rgba(92, 74, 63, 0.36);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-5);
+  background-color: rgba(255, 255, 255, 0.43);
+  box-shadow:
+    inset 0 1px 0 var(--came-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.about-glass-frame::before {
+  content: "";
+  position: absolute;
+  left: var(--sp-4);
+  right: var(--sp-4);
+  top: -1px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--came-highlight) 12%,
+    rgba(76, 61, 51, 0.96) 50%,
+    var(--came-highlight) 88%,
+    transparent 100%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.about-glass-header,
+.about-glass-team,
+.about-glass-contact {
+  margin-top: var(--sp-8);
+}
+
+body[data-theme="stained-glass"] .team-card {
+  border-color: rgba(92, 74, 63, 0.30);
+  box-shadow: 0 4px 12px rgba(33, 24, 17, 0.05);
+}
+
+body[data-theme="stained-glass"] .team-grid {
+  border-top: 2px solid rgba(92, 74, 63, 0.50);
+  border-bottom: 2px solid rgba(92, 74, 63, 0.44);
+  padding-top: var(--sp-5);
+  padding-bottom: var(--sp-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-theme="stained-glass"]::after {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  body[data-theme="stained-glass"]::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body[data-theme="stained-glass"]::before {
+    background-size:
+      min(42vw, 220px),
+      min(42vw, 220px),
+      min(42vw, 220px),
+      min(42vw, 220px),
+      360px 360px;
+    opacity: calc(var(--glass-edge-opacity) * 0.75);
+  }
+
+  .about-glass-frame {
+    padding: var(--sp-4);
+  }
+}
+
+
+/* ------------------------------------------------------------
    BUTTONS
    ------------------------------------------------------------ */
 
@@ -1351,4 +1519,3 @@ a.btn--primary {
     font-size: var(--text-base) !important;
   }
 }
-

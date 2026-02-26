@@ -207,6 +207,111 @@ This is standard for open-access academic publishing. You can change it in `_inc
 
 ---
 
+## AI Ingestion Workflow
+
+Use this for low-volume, one-at-a-time document ingestion with AI assistance.
+
+Detailed docs:
+- Team runbook: `docs/TEAM_AGENT_INGESTION_GUIDE.md`
+- Canonical rules for agents: `docs/INGESTION_PLAYBOOK.md`
+
+Shortest happy path:
+
+```bash
+# 1) Drop a .docx or .pdf into ingest/inbox/
+
+# 2) Extract source text + metadata hints
+scripts/ingest_extract.sh ingest/inbox/<file> --kind forum
+# or
+scripts/ingest_extract.sh ingest/inbox/<file> --kind article
+
+# 3) Use your AI agent with:
+#    - docs/INGESTION_PLAYBOOK.md
+#    - docs/prompts/INGEST_FORUM.md or docs/prompts/INGEST_ARTICLE.md
+#    - ingest/working/<basename>.source.md
+#    - ingest/working/<basename>.meta.yml
+
+# 4) Validate final output before commit
+scripts/validate_content.sh <final-markdown-path>
+# optional full-site check
+scripts/validate_content.sh <final-markdown-path> --build
+```
+
+Output targets:
+- Forum: `_board_posts/YYYY-MM-slug.md`
+- Article: `_articles/YYYY-issue-slug-order-short-title.md`
+
+Collision handling:
+- Append `-v2`, `-v3`, etc.
+
+Human editorial approval is always required before publish.
+
+Step 2 -> 3 handoff (copy/paste):
+
+1. Find your extracted files in `ingest/working/`:
+```bash
+ls -1 ingest/working/*.source.md ingest/working/*.meta.yml
+```
+
+2. Paste one of these prompts into your agent and replace placeholders.
+
+Forum prompt:
+```text
+Use this repo at the current cwd. Ingest one Forum submission.
+
+Read and follow:
+- docs/INGESTION_PLAYBOOK.md
+- docs/prompts/INGEST_FORUM.md
+
+Input files:
+- Source markdown: ingest/working/<basename>.source.md
+- Metadata hints: ingest/working/<basename>.meta.yml
+
+Run metadata:
+- date: YYYY-MM-DD
+- author: <Author Name>
+- optional subtitle: <or omit>
+- optional affiliation: <or omit>
+- optional tags: [tag-one, tag-two]
+
+Do all work end-to-end:
+1) produce final markdown with valid frontmatter for layout: board_post
+2) write to _board_posts/YYYY-MM-slug.md (apply -v2/-v3 collision handling)
+3) run scripts/validate_content.sh on the written file
+4) report: output file path + validation result + any QA concerns
+```
+
+Article prompt:
+```text
+Use this repo at the current cwd. Ingest one Issue article submission.
+
+Read and follow:
+- docs/INGESTION_PLAYBOOK.md
+- docs/prompts/INGEST_ARTICLE.md
+
+Input files:
+- Source markdown: ingest/working/<basename>.source.md
+- Metadata hints: ingest/working/<basename>.meta.yml
+
+Run metadata:
+- issue: <must match issue_id in _issues/*.md>
+- order: <integer>
+- type: Essay | Research Article | Response | Translation
+- date: YYYY-MM-DD
+- author: <Author Name>
+- affiliation: <Affiliation>
+- optional subtitle: <or omit>
+- optional tags: [tag-one, tag-two]
+
+Do all work end-to-end:
+1) produce final markdown with valid frontmatter for layout: article
+2) write to _articles/YYYY-issue-slug-order-short-title.md (apply -v2/-v3 collision handling)
+3) run scripts/validate_content.sh on the written file
+4) report: output file path + validation result + citation/footnote QA concerns
+```
+
+---
+
 ## Repo Structure
 
 ```

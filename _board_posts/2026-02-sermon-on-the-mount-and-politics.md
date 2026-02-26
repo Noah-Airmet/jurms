@@ -1,0 +1,120 @@
+---
+layout:      board_post
+title:       "The Sermon on the Mount and the Politics We Practice"
+author:      "Josh Abbott"
+date:        2026-02-26
+excerpt:     A Latter-day Saint reflection on how the Sermon on the Mount should shape Christian political behavior more than algorithms, parties, or outrage-driven media habits.
+tags:
+  - politics
+  - discipleship
+  - sermon-on-the-mount
+  - social-media
+---
+
+> ***Blessed are the pure in heart***\
+> (Matthew 5:9, KJV)
+
+February 26, 2026 / Josh Abbott
+
+As a Latter-day Saint studying public policy, I spend much of my time thinking about political systems, constitutions, authority, ethics, and institutional design. But when I return to the Sermon on the Mount in the Gospel of Matthew 5–7, I am reminded that Christ does not begin with systems. He begins with the soul.
+
+That is precisely why the Sermon is politically disruptive.
+
+Before I defend a candidate, repost a headline, or critique a movement, I am confronted with a prior question: **Is my political alignment actually formed by Jesus Christ, or by the digital ecosystems that constantly catechize me?**
+
+In an age of curated feeds and algorithmic outrage, that distinction matters.
+
+## The Beatitudes as a Political Examination
+
+“*Blessed are the meek… the merciful… the peacemakers*.”
+
+These are not traits rewarded by the algorithm. Outrage spreads faster than mercy. Sarcasm travels farther than gentleness. Contempt performs better than charity.
+
+Yet Christ blesses meekness.
+
+The early Church did not treat these words as decorative spirituality. Augustine of Hippo described the Sermon on the Mount as presenting “*a perfect standard of the Christian life*.”[^1] If that is true, and I believe it is, then it must also function as a standard for Christian political behavior.
+
+If I would not say it in sacrament meeting, I should not post it online.
+
+If I would be ashamed to pray it, I should be ashamed to tweet it.
+
+**If my tone online contradicts the Beatitudes, I cannot claim fidelity to Christ while excusing myself as “just being political.” Discipleship does not log off when I log on.**
+
+## “But I Say Unto You”
+
+In the Sermon, Christ intensifies the law: anger becomes morally continuous with murder; lust with adultery; truthfulness so complete that oaths are unnecessary.
+
+This movement from outward compliance to inward transformation is devastating for modern political culture. It means that holding the correct policy positions is not enough. It means I cannot baptize resentment because my cause feels righteous.
+
+John Chrysostom observed that in this sermon Christ “*raises the standard far higher*” than legal observance.[^2] The higher standard is interior holiness.
+
+That includes the way I speak about those I oppose. **When I justify cruelty because the stakes feel high, I am not being courageous. I am being disobedient.**
+
+## Disciples of Christ, or of the Algorithm?
+
+Here is the question that has unsettled me most:
+
+**Am I a disciple of Christ, or of my algorithm?**
+
+Algorithms reward speed, outrage, certainty, and tribal loyalty. The Sermon rewards patience, mercy, humility, and enemy-love. One forms consumers of content. The other forms disciples of Christ.
+
+When my emotional reactions are predictable, when I am consistently angrier after scrolling than after praying, I should pause. **Christ commands, “Love your enemies.” The algorithm monetizes them.**
+
+If my political posture mirrors the incentives of my feed more than the character of my Savior, then my formation is coming from the wrong mountain. **Political idolatry does not merely distort discourse; it corrodes discipleship.**
+
+## Compassion as a Measure
+
+The Restoration reinforces this inward test. Joseph Smith taught, “*The nearer we get to our heavenly Father, the more are we disposed to look with compassion on perishing souls.*”[^3]
+
+Compassion is not weakness, it is proximity to God.
+
+**If proximity to my preferred media source produces agitation, suspicion, and scorn, but proximity to God produces mercy, then I must ask which voice I am allowing to shape me most consistently.**
+
+Political engagement is not the problem. Disordered allegiance is.
+
+## Mammon, Security, and Fear
+
+“*No man can serve two masters*.”
+
+Christ names mammon, but the principle extends further. Anything that claims ultimate loyalty competes with Him—nation, party, ideology, even digital identity.
+
+**When fear of cultural decline overrides Christ’s commands about mercy and truth, something has gone wrong.** When anxiety about losing influence eclipses the call to be peacemakers, I have likely confused the preservation of power with the advancement of the kingdom.
+
+The Sermon does not forbid political concern. It forbids ultimate trust in political solutions. **A Church that sounds indistinguishable from its preferred news source has already conceded too much.**
+
+## Rock or Sand
+
+The Sermon closes with a verdict: only one foundation endures.
+
+Hearing without doing is sand. Admiring the Sermon while living according to partisan instincts is sand. Posting Scripture while speaking with contempt is sand.
+
+Storms are assumed. Elections will turn. Cultural tides will shift. **The durability of my discipleship will not be measured by whether my side wins, but by whether my character resembles Christ when it loses.**
+
+**The Sermon on the Mount critiques progressivism and conservatism alike. It exposes pride wherever it appears.** It confronts tribalism on every side. That is precisely why it must remain our standard.
+
+## A Necessary Reckoning
+
+So I have had to ask myself:
+
+**Do I reinterpret Jesus to defend my politics, or do I allow Jesus to confront them?  
+Am I more fluent in the language of my party than in the language of the Beatitudes?**
+
+The call is not withdrawal. It is reformation.
+
+We are called to be disciples of Christ, not disciples of our algorithms. **To be formed by Scripture more than by scrolling.** To let the Sermon on the Mount shape our tone before we attempt to shape the nation.
+
+If Christ is Lord, then His sermon is not inspirational background noise. It is the constitution of the kingdom to which we belong.
+
+And every political instinct, every post, every argument, every allegiance must kneel before it. If they do not kneel before it, they will eventually replace it.
+
+## About the Author
+
+Josh Abbott is an undergraduate student at Utah Valley University majoring in Public Policy and Administration with a minor in Religious Studies. His work centers on the ethical analysis of political life, examining how power, law, and national identity are measured against the moral demands of Christian theology. In addition to his academic studies, he has actively engaged in Latter-day Saint apologetics, contributing to thoughtful defense and articulation of Church doctrine and history. He is also involved in historical research and collects rare Latter-day Saint literature and artifacts, to better understand the lived faith and ethical vision of early Saints. His writing reflects a commitment to scholarly rigor, faithful inquiry, and serious moral engagement at the intersection of religion and public life.
+
+## Footnotes
+
+[^1]: Augustine of Hippo, *Our Lord’s Sermon on the Mount* (De Sermone Domini in Monte), I.1.1, in *Nicene and Post-Nicene Fathers*, First Series, Vol. 6, ed. Philip Schaff. [https://bishoysblog.com/wp-content/uploads/2015/01/nicene-post-nicene-fathers-series-1-volume-6.pdf](https://bishoysblog.com/wp-content/uploads/2015/01/nicene-post-nicene-fathers-series-1-volume-6.pdf)
+
+[^2]: John Chrysostom, *Homilies on the Gospel of Saint Matthew*, Homily XV, in *Nicene and Post-Nicene Fathers*, First Series, Vol. 10, ed. Philip Schaff. [https://www.ccel.org/ccel/s/schaff/npnf110/cache/npnf110.pdf](https://www.ccel.org/ccel/s/schaff/npnf110/cache/npnf110.pdf)
+
+[^3]: Joseph Smith, *Teachings of the Prophet Joseph Smith*, sel. Joseph Fielding Smith (Salt Lake City: Deseret Book, 1976), 241.
