@@ -849,6 +849,85 @@ a:hover { color: var(--c-accent-hover); }
   border-color: var(--c-accent);
 }
 
+/* Call for Papers CTA + page */
+.cfp-banner {
+  display: block;
+  width: 100%;
+  margin: var(--sp-10) 0 var(--sp-6);
+  padding: var(--sp-6) var(--sp-8);
+  border: var(--border-width) solid var(--c-accent);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, rgba(30, 58, 95, 0.08) 0%, rgba(30, 58, 95, 0.03) 100%);
+  text-decoration: none;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.cfp-banner:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  border-color: var(--c-accent-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.cfp-banner__eyebrow {
+  display: block;
+  font-family: var(--f-sans);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  font-weight: var(--weight-semibold);
+  color: var(--c-accent);
+  margin-bottom: var(--sp-2);
+}
+
+.cfp-banner__text {
+  display: block;
+  font-family: var(--f-serif);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  color: var(--c-text);
+}
+
+.cfp-panel {
+  margin: var(--sp-4) 0 var(--sp-16);
+  border: var(--border-width) solid var(--c-border);
+  border-radius: var(--radius-lg);
+  background: var(--c-surface);
+  padding: var(--sp-8);
+}
+
+.cfp-panel__meta {
+  font-family: var(--f-sans);
+  font-size: var(--text-xs);
+  color: var(--c-text-muted);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-3);
+}
+
+.cfp-panel__title {
+  font-family: var(--f-serif);
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--sp-4);
+}
+
+.cfp-panel__topic,
+.cfp-panel__deadline,
+.cfp-panel__description {
+  font-size: var(--text-base);
+  color: var(--c-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--sp-4);
+}
+
+.cfp-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  margin-top: var(--sp-2);
+}
+
 
 /* ------------------------------------------------------------
    COMMUNITY BOARD
@@ -1347,6 +1426,23 @@ a.btn--primary {
   .issue-card {
     grid-template-columns: 1fr;
     gap: var(--sp-8);
+  }
+
+  .cfp-banner {
+    padding: var(--sp-5);
+    margin-top: var(--sp-8);
+  }
+
+  .cfp-banner__text {
+    font-size: var(--text-xl);
+  }
+
+  .cfp-panel {
+    padding: var(--sp-6);
+  }
+
+  .cfp-panel__title {
+    font-size: var(--text-2xl);
   }
 
   .article-header { padding: var(--sp-10) 0 var(--sp-6); }

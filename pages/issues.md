@@ -5,6 +5,30 @@ permalink: /issues/
 ---
 
 <div class="container">
+  {% assign now_epoch = 'now' | date: '%s' %}
+  {% assign upcoming_by_deadline = site.issues | where: "upcoming", true | sort: "deadline" %}
+  {% assign next_call_issue = nil %}
+  {% for issue in upcoming_by_deadline %}
+    {% if issue.deadline %}
+      {% assign issue_epoch = issue.deadline | date: "%s" %}
+      {% if issue_epoch >= now_epoch %}
+        {% assign next_call_issue = issue %}
+        {% break %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  <a href="{{ '/call-for-papers/' | relative_url }}" class="cfp-banner">
+    <span class="cfp-banner__eyebrow">Call for Papers</span>
+    {% if next_call_issue %}
+      <span class="cfp-banner__text">
+        {{ next_call_issue.title }}{% if next_call_issue.theme %} — {{ next_call_issue.theme }}{% endif %}
+        {% if next_call_issue.deadline %} · Submissions due {{ next_call_issue.deadline | date: "%B %-d, %Y" }}{% endif %}
+      </span>
+    {% else %}
+      <span class="cfp-banner__text">View the next upcoming issue and submission details</span>
+    {% endif %}
+  </a>
 
   <div class="page-header">
     <h1 class="page-header__title">Issues</h1>

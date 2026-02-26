@@ -30,8 +30,8 @@ studies, with a short introduction.
 
 Submit as a Google Doc or `.docx` file. Use the following conventions:
 
-- Title, author name, and institutional affiliation at the top
-- Abstract (100–200 words) for research articles and longer essays
+- Title, author name, and institutional affiliation (if applicable) at the top
+- Abstract (100–200 words) for research articles and longer essays (above 6,000 words)
 - Chicago footnotes (not endnotes, not parenthetical)
 - Quotations over four lines should be block-indented
 - No anonymous submission — we do not blind-review
@@ -43,7 +43,7 @@ Accepted submissions are normalized through our editorial ingestion workflow bef
 
 We are organized around thematic issues. Current and upcoming themes are listed on the
 [issues page]({{ '/issues/' | relative_url }}). We will consider pieces submitted outside a current theme for
-future issues.
+future issues, or suggest that they be published to the Forum.
 
 ## Process
 
