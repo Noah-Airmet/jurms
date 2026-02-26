@@ -1087,7 +1087,7 @@ a.btn--primary {
 }
 
 @media (max-width: 480px) {
-  .site-nav { gap: var(--sp-4); }
+  .site-nav { gap: var(--sp-3); }
   .site-nav__link { font-size: var(--text-xs); }
 }
 
