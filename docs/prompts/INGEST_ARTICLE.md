@@ -35,6 +35,13 @@ Tasks:
 7. Footnote ordering rule:
    - If you include `## Footnotes`, keep footnote definitions directly under that heading.
    - Do not place `## About the Author` (or any other heading) between a Footnotes heading and footnote definitions.
+8. Remove duplicated byline metadata in body:
+   - Do not include a standalone byline line like `Month Day, Year / Author Name` in the article body.
+   - Author/date/affiliation should be represented in frontmatter and rendered by layout, not repeated in prose.
+9. Horizontal rules:
+   - If the source document includes horizontal divider lines between sections, preserve them.
+   - Render those lines in Markdown as `---` with blank lines above and below.
+   - Do not invent extra divider lines not present in the source.
 
 Hard constraints:
 - Do not fabricate facts, citations, or quotations.

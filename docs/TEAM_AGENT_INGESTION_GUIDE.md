@@ -136,6 +136,10 @@ ls -1 ingest/working/*.source.md ingest/working/*.meta.yml
   - Expected for some PDFs; manually correct headings/notes after extraction.
 - Footnotes heading appears above About the Author but notes render later
   - Use the prompt footnote ordering rule: keep note content directly under `## Footnotes`; do not place another heading between Footnotes and note content.
+- Duplicate date/author line appears in body text
+  - Remove standalone byline text like `Month Day, Year / Author Name`; author/date should come from frontmatter only.
+- Source had divider lines but output lost them
+  - Ask the agent to preserve source divider lines as Markdown `---` between sections (only where present in the submitted document).
 
 ## Definition of Done
 

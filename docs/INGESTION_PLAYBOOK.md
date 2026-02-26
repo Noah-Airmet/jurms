@@ -71,6 +71,10 @@ Optional keys:
 - Preserve block quotations and set off long quotations cleanly.
 - Use standard Markdown lists and emphasis.
 - Avoid raw HTML unless Markdown cannot represent required structure.
+- Remove duplicated byline metadata in body text (for example `February 26, 2026 / Author Name`) because author/date already render from frontmatter.
+- Preserve horizontal rules from source documents when they are semantically used as section separators.
+- Represent horizontal rules in Markdown as `---` (or `***`), with blank lines around them.
+- Do not add decorative horizontal rules that were not present in the source submission.
 
 ## 6. Excerpt and Abstract Rules
 

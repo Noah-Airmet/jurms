@@ -59,7 +59,14 @@ fi
 
 get_value() {
   local key="$1"
-  printf '%s\n' "$FRONTMATTER" | awk -F': *' -v k="$key" '$1==k{sub(/^"|"$/, "", $2); print $2; exit}'
+  printf '%s\n' "$FRONTMATTER" | awk -F': *' -v k="$key" '
+    $1==k{
+      sub(/^"/, "", $2);
+      sub(/"$/, "", $2);
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", $2);
+      print $2;
+      exit
+    }'
 }
 
 has_key() {
@@ -100,6 +107,9 @@ if ! date -j -f "%Y-%m-%d" "$DATE_VALUE" "+%Y-%m-%d" >/dev/null 2>&1; then
   fail "date must be in YYYY-MM-DD format (found '$DATE_VALUE')."
 fi
 
+AUTHOR_VALUE="$(get_value author)"
+HUMAN_DATE="$(date -j -f "%Y-%m-%d" "$DATE_VALUE" "+%B %-d, %Y" 2>/dev/null || true)"
+
 if [[ "$LAYOUT" == "article" ]]; then
   ISSUE_VALUE="$(get_value issue)"
   ORDER_VALUE="$(get_value order)"
@@ -114,6 +124,33 @@ fi
 
 if rg -n "\[Your Name\]|TODO|TBD|\[Placeholder" "$FILE" >/dev/null 2>&1; then
   fail "file contains placeholder text ([Your Name], TODO, TBD, or [Placeholder)."
+fi
+
+# Guard against duplicated byline metadata in body content.
+# Common bad ingestion output: "Month Day, Year / Author Name" near the top.
+if [[ -n "$AUTHOR_VALUE" && -n "$HUMAN_DATE" ]]; then
+  FRONTMATTER_END_LINE="$(awk 'BEGIN{fm=0;n=0} {n=NR} /^---[[:space:]]*$/ {if(fm==0){fm=1} else if(fm==1){print NR; exit}}' "$FILE")"
+  BODY_HEAD="$(tail -n +"$((FRONTMATTER_END_LINE + 1))" "$FILE" | head -n 80)"
+
+  DUP_PATTERNS=(
+    "$HUMAN_DATE / $AUTHOR_VALUE"
+    "$AUTHOR_VALUE / $HUMAN_DATE"
+    "$HUMAN_DATE · $AUTHOR_VALUE"
+    "$AUTHOR_VALUE · $HUMAN_DATE"
+    "$HUMAN_DATE - $AUTHOR_VALUE"
+    "$AUTHOR_VALUE - $HUMAN_DATE"
+  )
+  DUP_FOUND="false"
+  for p in "${DUP_PATTERNS[@]}"; do
+    if printf '%s\n' "$BODY_HEAD" | grep -F "$p" >/dev/null 2>&1; then
+      DUP_FOUND="true"
+      break
+    fi
+  done
+
+  if [[ "$DUP_FOUND" == "true" ]]; then
+    fail "body appears to duplicate byline metadata (date/author). Remove standalone byline text from body and keep metadata in frontmatter only."
+  fi
 fi
 
 # Guard against a common ingestion issue:

@@ -83,7 +83,6 @@ a:hover { color: var(--c-accent-hover); }
   height: var(--header-height);
   display: flex;
   align-items: center;
-  overflow: hidden;
 }
 
 /* Global header bottom came rail (fades toward edges) */
@@ -1334,6 +1333,11 @@ a.btn--primary {
     font-size: var(--text-base);
     padding-top: var(--sp-1);
     padding-bottom: var(--sp-1);
+  }
+
+  .site-header::after {
+    left: 9vw;
+    right: 9vw;
   }
 
   .hero { padding: var(--sp-16) 0 var(--sp-10); }

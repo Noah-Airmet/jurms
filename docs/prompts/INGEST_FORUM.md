@@ -33,6 +33,13 @@ Tasks:
    - If you include `## Footnotes`, keep note content directly under it.
    - Do not place `## About the Author` (or any other heading) between a Footnotes heading and its note content.
    - For endnote-style source lists without inline note markers, use a plain numbered list instead of `[^1]:` definitions.
+8. Remove duplicated byline metadata in body:
+   - Do not include a standalone byline line like `Month Day, Year / Author Name` in the article body.
+   - Author/date must appear only in frontmatter so layout renders them once.
+9. Horizontal rules:
+   - If the source document includes horizontal divider lines between sections, preserve them.
+   - Render those lines in Markdown as `---` with blank lines above and below.
+   - Do not invent extra divider lines not present in the source.
 
 Hard constraints:
 - Do not fabricate facts or citations.

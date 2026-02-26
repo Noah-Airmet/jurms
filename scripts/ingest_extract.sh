@@ -88,6 +88,105 @@ ERR
   fi
 
   pandoc "$INPUT" -t gfm --wrap=none -o "$SOURCE_MD"
+  augment_docx_horizontal_rules "$INPUT" "$SOURCE_MD"
+}
+
+augment_docx_horizontal_rules() {
+  local docx_path="$1"
+  local md_path="$2"
+
+  if ! command -v python3 >/dev/null 2>&1; then
+    return 0
+  fi
+
+  # Word often stores divider lines as VML HR shapes (o:hr="t"), which pandoc may drop.
+  # Recover those by inserting Markdown thematic breaks before matching headings.
+  python3 - "$docx_path" "$md_path" <<'PY'
+import html
+import re
+import sys
+import zipfile
+from pathlib import Path
+
+docx_path = sys.argv[1]
+md_path = sys.argv[2]
+
+try:
+    with zipfile.ZipFile(docx_path) as zf:
+        xml = zf.read("word/document.xml").decode("utf-8", "ignore")
+except Exception:
+    raise SystemExit(0)
+
+paragraphs = re.findall(r"<w:p\b.*?</w:p>", xml)
+if not paragraphs:
+    raise SystemExit(0)
+
+markers = []
+for i, para in enumerate(paragraphs[:-1]):
+    if 'o:hr="t"' not in para:
+        continue
+    for j in range(i + 1, min(i + 8, len(paragraphs))):
+        nxt = paragraphs[j]
+        texts = re.findall(r"<w:t[^>]*>(.*?)</w:t>", nxt)
+        if not texts:
+            continue
+        marker = html.unescape("".join(texts))
+        marker = re.sub(r"\s+", " ", marker).strip()
+        if marker:
+            markers.append(marker)
+            break
+
+if not markers:
+    raise SystemExit(0)
+
+def norm(s: str) -> str:
+    s = s.lower()
+    s = re.sub(r"[`*_>#\[\](){}\"'“”‘’.,:;!?/\\\-]+", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+marker_norms = [norm(m) for m in markers]
+used = [False] * len(marker_norms)
+
+src = Path(md_path)
+lines = src.read_text(encoding="utf-8").splitlines()
+out = []
+
+def is_rule(line: str) -> bool:
+    s = line.strip()
+    return s in ("---", "***", "___")
+
+for line in lines:
+    line_norm = norm(line)
+    is_heading = bool(re.match(r"^\s{0,3}#{1,6}\s+", line))
+    should_insert_rule = False
+
+    if is_heading and line_norm:
+        for idx, marker in enumerate(marker_norms):
+            if used[idx] or not marker:
+                continue
+            if marker in line_norm or line_norm in marker:
+                should_insert_rule = True
+                used[idx] = True
+                break
+
+    if should_insert_rule:
+        prev_nonblank = None
+        for prev in reversed(out):
+            if prev.strip():
+                prev_nonblank = prev
+                break
+        if prev_nonblank is not None and not is_rule(prev_nonblank):
+            if out and out[-1].strip():
+                out.append("")
+            out.append("---")
+            out.append("")
+
+    out.append(line)
+
+if out != lines:
+    src.write_text("\n".join(out).rstrip() + "\n", encoding="utf-8")
+PY
 }
 
 extract_pdf() {
