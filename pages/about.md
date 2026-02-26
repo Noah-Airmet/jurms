@@ -55,7 +55,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
       <div class="team-card">
         <p class="team-card__name">Cade</p>
         <p class="team-card__role">Social Media</p>
-        <p class="team-card__bio">Update in pages/about.md.</p>
+        <p class="team-card__bio">Creator of the All Those in Favor channel.</p>
       </div>
       <div class="team-card">
         <p class="team-card__name">Sid</p>
@@ -65,7 +65,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
       <div class="team-card">
         <p class="team-card__name">Christian</p>
         <p class="team-card__role">Operations</p>
-        <p class="team-card__bio">Update in pages/about.md.</p>
+        <p class="team-card__bio">Pursuing a degree in Philosophy.</p>
       </div>
       <div class="team-card">
         <p class="team-card__name">Brigham</p>
