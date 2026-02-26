@@ -1505,6 +1505,7 @@ a.btn--primary {
   justify-content: center;
   z-index: 1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .parallax-arch img {

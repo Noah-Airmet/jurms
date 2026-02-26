@@ -52,7 +52,7 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
       <div class="team-card">
         <p class="team-card__name">Noah</p>
         <p class="team-card__role">Architecture</p>
-        <p class="team-card__bio">Interests: patristics, psychology, epistemology.</p>
+        <p class="team-card__bio">Pursuing a degree in Cybersecurity. Interests: patristics, psychology, epistemology.</p>
       </div>
       <div class="team-card">
         <p class="team-card__name">Cade</p>
@@ -68,6 +68,11 @@ We take doctrine seriously. We take evidence seriously. We try not to confuse th
         <p class="team-card__name">Christian</p>
         <p class="team-card__role">Operations</p>
         <p class="team-card__bio">Update in pages/about.md.</p>
+      </div>
+      <div class="team-card">
+        <p class="team-card__name">Brigham</p>
+        <p class="team-card__role">Copyediting</p>
+        <p class="team-card__bio">Pursuing degrees in Public Policy & Administration, Technical & Professional Writing, and Ancient Languages.</p>
       </div>
     </div>
   </div>

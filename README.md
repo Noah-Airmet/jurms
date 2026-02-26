@@ -249,7 +249,7 @@ Human editorial approval is always required before publish.
 Step 2 -> 3 handoff (copy/paste):
 
 1. Find your extracted files in `ingest/working/`:
-```bash
+1```bash
 ls -1 ingest/working/*.source.md ingest/working/*.meta.yml
 ```
 

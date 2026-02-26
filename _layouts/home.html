@@ -18,10 +18,10 @@ layout: default
 
       <!-- Initial Title that fades out during zoom -->
       <!-- We start it translated up so it sits on the upper half of the screen -->
-      <div class="parallax-content" id="hero-initial-title" style="transform: translateY(-20vh);">
+      <div class="parallax-content" id="hero-initial-title" style="transform: translateY(-25vh);">
         <h1 class="hero__title" style="margin-bottom: var(--sp-2); font-style: italic;">Telos</h1>
         <!-- Scroll indicator -->
-        <div class="scroll-indicator" id="scroll-indicator" style="font-size: var(--text-xs); font-style: italic; letter-spacing: 0.1em; margin-top: var(--sp-5);">
+        <div class="scroll-indicator" id="scroll-indicator" style="font-size: var(--text-xs); font-style: italic; letter-spacing: 0.1em; margin-top: var(--sp-1);">
           <span>Scroll to explore</span>
           <div class="scroll-arrow" style="font-size: var(--text-sm); font-style: normal;">↓</div>
         </div>
@@ -34,7 +34,7 @@ layout: default
         <div class="parallax-text-block" id="hero-text-1">
           <p class="hero__description"
             style="font-family: var(--f-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance;">
-            A student-run undergraduate journal for all college-age Latter-day Saints...
+            A student-run undergraduate journal for all college-age Latter-day Saints (and those interested in the tradition)...
           </p>
         </div>
 
@@ -50,10 +50,17 @@ layout: default
         <div class="parallax-text-block" id="hero-text-3">
           <p class="hero__description"
             style="font-family: var(--f-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance; color: var(--c-text-muted);">
-            <em>Telos</em> (Greek: τέλος): the ultimate aim, the final cause, the purpose toward which all things move. What's your <em>Telos?</em>
+            <em>Telos</em> (Greek: τέλος): the ultimate aim, the final cause, the purpose toward which all things move.</em>
           </p>
         </div>
 
+        <!-- Block 4: Our Telos is Christ -->
+        <div class="parallax-text-block" id="hero-text-4">
+          <p class="hero__description"
+            style="font-family: var(--f-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); max-width: 600px; margin: 0 auto; text-wrap: balance; color: var(--c-text-muted);">
+            Our <em>Telos</em> is Jesus Christ.
+          </p>
+        </div>
       </div>
 
     </div>
@@ -72,13 +79,13 @@ layout: default
       style="max-width: var(--container-narrow); margin: 0 auto; text-align: center; font-size: var(--text-lg); line-height: var(--leading-relaxed);">
       <p>
         Telos is an informal, self-published undergraduate journal.
-        We write seriously about questions that matter to us — doctrine, history, philosophy,
-        and the life of faith — for readers who share the tradition.
+        We write seriously about questions that matter to us (doctrine, history, philosophy,
+        and the life of faith) for readers who share the tradition.
       </p>
       <p style="margin-top: var(--sp-6);">
-        We are not peer-reviewed by design. We believe the best undergraduate scholarship happens when
-        students write for and witheach other. We hope this project serves as a sandbox for ideas that can
-        help students publish their work later in formal venues.
+        By design, we are not academically peer-reviewed beyond our internal editorial process. 
+        We believe the best undergraduate scholarship happens when students write for and witheach other. 
+        We hope this project serves as a sandbox for ideas that can help students publish their work later in formal venues.
       </p>
       <div style="margin-top: var(--sp-10); display: flex; gap: var(--sp-4); justify-content: center;">
         <a href="{{ '/issues/' | relative_url }}" class="btn btn--primary"
@@ -109,7 +116,8 @@ layout: default
     // Shorter duration on mobile for better UX
     const scrollDistance = isMobile ? "+=2500" : "+=4000";
     const archScale = isMobile ? 5 : 10; // Final zoom scale - reduced to show interior panes
-    const archYPercent = isMobile ? 60 : 35; // Move it further down on mobile exit
+    const archExitScale = isMobile ? 20 : 10; // On mobile, scale heavily so arch edges fully exit viewport
+    const archYPercent = isMobile ? 180 : 35; // Move arch far below viewport on mobile exit
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -149,13 +157,6 @@ layout: default
       ease: "power2.in"
     }, 0);
 
-    // Dim the background subtly inside the arch to make reading easier
-    tl.to("#hero-sticky", {
-      backgroundColor: "var(--c-surface-alt)",
-      duration: 2,
-      ease: "none"
-    }, 0);
-
     // PHASE 2: SEQUENTIAL TEXT REVEAL
     // Wait for zoom to finish, then bring in text blocks one by one
     // Each block fades in, stays for a moment, then fades out as the next arrives
@@ -167,7 +168,9 @@ layout: default
     const block2End = isMobile ? 5.0 : 6.5;
     const block3Start = isMobile ? 5.2 : 7.0;
     const block3End = isMobile ? 6.5 : 9.0;
-    const archFadeEnd = isMobile ? 6.5 : 9.0;
+    const block4Start = block3End;
+    const block4End = isMobile ? block4Start + 1.5 : block4Start + 2;
+    const archFadeEnd = block4End;
 
     // Block 1
     tl.fromTo("#hero-text-1",
@@ -192,19 +195,28 @@ layout: default
       block3Start
     );
 
-    // On mobile, also move the arch down and out of view completely
+    // On mobile, move the arch down and scale it so it fully exits the viewport (no side bands visible)
     if (isMobile) {
       tl.to("#hero-arch img", {
         yPercent: archYPercent,
-        scale: 7, // Continue scaling up (reduced to show interior panes)
+        scale: archExitScale,
         duration: 1.5,
         ease: "power2.inOut"
       }, block3Start);
     }
 
-    // In the final phase of the timeline, block 3 and the arch fade out 
-    // to transition cleanly to the "About" section below
+    // Block 3 fades out; then block 4 fades in
     tl.to("#hero-text-3", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, block3End);
+
+    // Block 4: Our Telos is Christ (shows after block 3)
+    tl.fromTo("#hero-text-4",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 1, ease: "power1.out" },
+      block4Start
+    );
+    tl.to("#hero-text-4", { opacity: 0, y: -30, duration: 1, ease: "power1.in" }, block4End);
+
+    // Arch and block 4 fade out to transition to the "About" section
     tl.to("#hero-arch", { opacity: 0, duration: 1, ease: "power2.inOut" }, archFadeEnd);
 
   });
