@@ -93,6 +93,7 @@ a:hover { color: var(--c-accent-hover); }
   max-width: var(--container-wide);
   margin: 0 auto;
   padding: 0 var(--sp-6);
+  position: relative;
 }
 
 .site-logo {
@@ -140,6 +141,57 @@ a:hover { color: var(--c-accent-hover); }
   display: flex;
   align-items: center;
   gap: var(--sp-6);
+}
+
+.site-nav-toggle {
+  display: none;
+  position: relative;
+  width: 32px;
+  height: var(--header-height);
+  padding: 0;
+  margin-left: var(--sp-3);
+  border: none;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.site-nav-toggle__line {
+  display: block;
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 50%;
+  margin-top: -1px;
+  height: 1px;
+  background-color: var(--c-text-muted);
+  transform-origin: center;
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.site-nav-toggle__line + .site-nav-toggle__line {
+  /* no-op: spacing handled via absolute positioning */
+}
+
+.site-nav-toggle__line:nth-child(1) { margin-top: -7px; }
+.site-nav-toggle__line:nth-child(2) { margin-top: -1px; }
+.site-nav-toggle__line:nth-child(3) { margin-top: 5px; }
+
+.site-nav-toggle--open .site-nav-toggle__line:nth-child(1) {
+  margin-top: -1px;
+  transform: rotate(45deg);
+}
+
+.site-nav-toggle--open .site-nav-toggle__line:nth-child(2) {
+  opacity: 0;
+}
+
+.site-nav-toggle--open .site-nav-toggle__line:nth-child(3) {
+  margin-top: -1px;
+  transform: rotate(-45deg);
 }
 
 .site-nav__link {
@@ -1073,6 +1125,42 @@ a.btn--primary {
 
   .site-logo__subtitle { display: none; }
   .site-logo__icon { height: 28px; }
+
+  .site-header__inner {
+    padding-left: var(--sp-4);
+    padding-right: var(--sp-4);
+  }
+
+  .site-nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+    background-color: var(--c-bg);
+    border-bottom: var(--border-width) solid var(--c-border);
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    z-index: 90;
+    transition:
+      opacity var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .site-nav.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 
   .hero { padding: var(--sp-16) 0 var(--sp-10); }
   .hero__inner { grid-template-columns: 1fr; }
