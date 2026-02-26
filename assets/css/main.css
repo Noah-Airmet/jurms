@@ -390,9 +390,9 @@ a:hover { color: var(--c-accent-hover); }
 .issue-card__title {
   font-family: var(--f-serif);
   font-size: var(--text-4xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-wide);
   color: var(--c-text);
   margin-bottom: var(--sp-3);
 }
@@ -689,9 +689,9 @@ a:hover { color: var(--c-accent-hover); }
 .issue-header__title {
   font-family: var(--f-serif);
   font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-wide);
   margin-bottom: var(--sp-3);
 }
 
@@ -785,9 +785,9 @@ a:hover { color: var(--c-accent-hover); }
 .issue-thumb__title {
   font-family: var(--f-serif);
   font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-wide);
   color: var(--c-text);
   margin-bottom: var(--sp-1);
 }
@@ -868,9 +868,9 @@ a:hover { color: var(--c-accent-hover); }
 .board-card__title {
   font-family: var(--f-serif);
   font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-semibold);
   line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-wide);
   color: var(--c-text);
   margin-bottom: var(--sp-2);
 }
@@ -901,8 +901,8 @@ a:hover { color: var(--c-accent-hover); }
 .page-header__title {
   font-family: var(--f-serif);
   font-size: var(--text-4xl);
-  font-weight: var(--weight-bold);
-  letter-spacing: var(--tracking-tight);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
   line-height: var(--leading-tight);
   margin-bottom: var(--sp-4);
 }
