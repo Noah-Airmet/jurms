@@ -57,14 +57,14 @@
   /* ----------------------------------------------------------
    * TYPOGRAPHY
    * ----------------------------------------------------------
-   * Two-font system: Lora (serif) for headings and article
-   * body text; Inter (sans-serif) for all UI chrome.
+   * Two-font system: Instrument Serif (serif) for headings and
+   * article body text; Inter (sans-serif) for all UI chrome.
    *
    * Google Fonts are loaded in _includes/head.html.
    * Change the @link there if you want to swap fonts.
    * ---------------------------------------------------------- */
 
-  --f-serif:    'Lora', Georgia, 'Times New Roman', serif;
+  --f-serif:    'Instrument Serif', Georgia, 'Times New Roman', serif;
   --f-sans:     'Inter', system-ui, -apple-system, sans-serif;
 
   /* Type scale — based on 1rem = 16px root */
