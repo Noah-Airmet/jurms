@@ -25,7 +25,7 @@ Tasks:
 4. Generate valid Article frontmatter:
    - `layout: article`
    - `title`, `author`, `affiliation`, `issue`, `order`, `type`, `date`, `abstract`, `tags`
-   - optional `subtitle`, `pdf_url`, `content_type`
+   - optional `subtitle`, `pdf_url`, `content_type`, `header_image`, `header_image_alt`, `header_image_caption`
 5. Write final file to `_articles/` using filename `YYYY-issue-slug-order-short-title.md`.
    - If collision, append `-v2`, `-v3`, etc.
 6. Return QA notes:
@@ -42,6 +42,10 @@ Tasks:
    - If the source document includes horizontal divider lines between sections, preserve them.
    - Render those lines in Markdown as `---` with blank lines above and below.
    - Do not invent extra divider lines not present in the source.
+10. Images:
+   - If source images are present in extraction output, preserve inline image placement where it helps the argument.
+   - Move selected publishable images into `assets/images/articles/<article-slug>/` and reference them with site-relative Markdown paths.
+   - If a strong lead image exists, set `header_image`, `header_image_alt`, and optional `header_image_caption`.
 
 Hard constraints:
 - Do not fabricate facts, citations, or quotations.

@@ -74,6 +74,13 @@ has_key() {
   printf '%s\n' "$FRONTMATTER" | awk -F':' -v k="$key" '$1==k{found=1} END{exit found?0:1}'
 }
 
+has_key_nonempty() {
+  local key="$1"
+  local value
+  value="$(get_value "$key")"
+  [[ -n "${value// }" ]]
+}
+
 fail() {
   echo "Error: $1" >&2
   exit 1
@@ -119,6 +126,19 @@ if [[ "$LAYOUT" == "article" ]]; then
 
   if ! rg -n "^issue_id:\s*${ISSUE_VALUE}\s*$" _issues >/dev/null 2>&1; then
     fail "article issue '$ISSUE_VALUE' does not match any issue_id in _issues/*.md"
+  fi
+fi
+
+if has_key_nonempty header_image; then
+  HEADER_IMAGE_VALUE="$(get_value header_image)"
+  HEADER_IMAGE_ALT_VALUE="$(get_value header_image_alt)"
+
+  [[ "$HEADER_IMAGE_VALUE" =~ ^/ ]] || fail "header_image must be a site-relative path starting with '/' (found '$HEADER_IMAGE_VALUE')."
+  [[ -n "$HEADER_IMAGE_ALT_VALUE" ]] || fail "header_image_alt is required when header_image is set."
+
+  HEADER_IMAGE_FILE="${HEADER_IMAGE_VALUE#/}"
+  if [[ "$HEADER_IMAGE_VALUE" != http://* && "$HEADER_IMAGE_VALUE" != https://* && ! -f "$HEADER_IMAGE_FILE" ]]; then
+    fail "header_image file not found at '$HEADER_IMAGE_VALUE' (expected '$HEADER_IMAGE_FILE')."
   fi
 fi
 

@@ -4,6 +4,8 @@ title:       "Welcome to the Forum"
 author:      "The Telos Editors"
 date:        2026-01-15
 excerpt:     A short note on what the Forum is and how you can contribute.
+header_image: /assets/images/forum/welcome.png
+header_image_alt: "A stained-glass window in the shape of a semicircle depicting a rising sun over green hills."
 tags:
   - meta
   - forum

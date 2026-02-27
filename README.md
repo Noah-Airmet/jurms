@@ -230,6 +230,7 @@ scripts/ingest_extract.sh ingest/inbox/<file> --kind article
 #    - docs/prompts/INGEST_FORUM.md or docs/prompts/INGEST_ARTICLE.md
 #    - ingest/working/<basename>.source.md
 #    - ingest/working/<basename>.meta.yml
+#    - (optional) ingest/working/<basename>-media/ for extracted images
 
 # 4) Validate final output before commit
 scripts/validate_content.sh <final-markdown-path>
@@ -240,6 +241,13 @@ scripts/validate_content.sh <final-markdown-path> --build
 Output targets:
 - Forum: `_board_posts/YYYY-MM-slug.md`
 - Article: `_articles/YYYY-issue-slug-order-short-title.md`
+
+Image support:
+- Inline images are supported in Markdown (`![Alt](/assets/images/.../file.jpg)`).
+- Forum/Article header image is supported via frontmatter:
+  - `header_image: /assets/images/.../header.jpg`
+  - `header_image_alt: "Descriptive alt text"`
+  - optional `header_image_caption: "Caption text"`
 
 Collision handling:
 - Append `-v2`, `-v3`, etc.

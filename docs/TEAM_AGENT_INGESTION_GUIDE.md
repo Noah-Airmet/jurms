@@ -22,6 +22,7 @@ brew install pandoc poppler ripgrep
 - Drop incoming source file into `ingest/inbox/`.
 - Run extraction to produce artifacts in `ingest/working/`.
 - Ask your agent to convert and write final output into `_board_posts/` or `_articles/`.
+- If source includes embedded images, extraction may also produce `ingest/working/<basename>-media/`.
 
 ## Exact Commands
 
@@ -110,6 +111,12 @@ Quick helper to find generated extraction files:
 ls -1 ingest/working/*.source.md ingest/working/*.meta.yml
 ```
 
+Optional helper to inspect extracted media folders:
+
+```bash
+ls -la ingest/working/*-media 2>/dev/null || true
+```
+
 ## Review Checklist Before Commit
 
 - Frontmatter is complete and correct.
@@ -119,6 +126,8 @@ ls -1 ingest/working/*.source.md ingest/working/*.meta.yml
   - Article: `YYYY-issue-slug-order-short-title.md`
 - No placeholder text remains.
 - Citations and footnotes are intact.
+- Inline images (if present in source) are in sensible positions and have alt text.
+- Header image (if used) appears cleanly on Forum card and post page.
 - Human editor approved content and tone.
 - Validation script passes.
 

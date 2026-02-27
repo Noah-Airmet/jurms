@@ -626,7 +626,9 @@ a:hover { color: var(--c-accent-hover); }
 .article-body h4 + p,
 .article-body blockquote + p,
 .article-body ul + p,
-.article-body ol + p {
+.article-body ol + p,
+.article-body figure + p,
+.article-body hr + p {
   text-indent: 0;
 }
 
@@ -650,6 +652,42 @@ a:hover { color: var(--c-accent-hover); }
   border: none;
   border-top: var(--border-width) solid var(--c-border);
   margin: var(--sp-12) 0;
+}
+
+.article-hero {
+  margin: 0 0 var(--sp-10);
+}
+
+.article-hero__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: var(--border-width) solid var(--c-border-light);
+  border-radius: var(--radius-lg);
+  background: var(--c-surface-alt);
+}
+
+.article-hero__caption {
+  margin-top: var(--sp-3);
+  font-size: var(--text-xs);
+  color: var(--c-text-muted);
+}
+
+.article-body figure {
+  margin: var(--sp-8) 0;
+}
+
+.article-body img {
+  border-radius: var(--radius-md);
+  border: var(--border-width) solid var(--c-border-light);
+  margin: var(--sp-8) 0;
+  background: var(--c-surface-alt);
+}
+
+.article-body figcaption {
+  margin-top: var(--sp-2);
+  font-size: var(--text-xs);
+  color: var(--c-text-muted);
 }
 
 .article-body sup {
@@ -944,10 +982,10 @@ a:hover { color: var(--c-accent-hover); }
   background-color: var(--c-surface);
   border: var(--border-width) solid var(--c-border);
   border-radius: var(--radius-lg);
-  padding: var(--sp-6);
   text-decoration: none;
   color: inherit;
   display: block;
+  overflow: hidden;
   transition: box-shadow var(--transition-base), border-color var(--transition-base);
 }
 .board-card:hover {
@@ -963,6 +1001,23 @@ a:hover { color: var(--c-accent-hover); }
   text-transform: uppercase;
   color: var(--c-warm);
   margin-bottom: var(--sp-2);
+}
+
+.board-card__content {
+  padding: var(--sp-6);
+}
+
+.board-card__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--c-surface-alt);
+  border-bottom: var(--border-width) solid var(--c-border-light);
+}
+
+.board-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .board-card__title {

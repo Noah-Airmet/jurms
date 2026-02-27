@@ -33,6 +33,9 @@ Optional keys:
 
 - `subtitle`
 - `affiliation`
+- `header_image` (site-relative path, e.g. `/assets/images/forum/my-post/header.jpg`)
+- `header_image_alt`
+- `header_image_caption`
 
 ### Issue article (`layout: article`)
 
@@ -54,6 +57,9 @@ Optional keys:
 - `subtitle`
 - `pdf_url`
 - `content_type` (`pdf` only when publishing PDF-only body)
+- `header_image` (site-relative path, e.g. `/assets/images/articles/my-article/header.jpg`)
+- `header_image_alt`
+- `header_image_caption`
 
 ## 4. Citation and Footnotes
 
@@ -75,6 +81,9 @@ Optional keys:
 - Preserve horizontal rules from source documents when they are semantically used as section separators.
 - Represent horizontal rules in Markdown as `---` (or `***`), with blank lines around them.
 - Do not add decorative horizontal rules that were not present in the source submission.
+- Preserve inline images from source documents when present and relevant.
+- For final published files, reference images from `assets/images/...` (site-relative URLs in Markdown, e.g. `![Alt text](/assets/images/forum/my-post/image-1.png)`).
+- Provide meaningful alt text for each inline image and header image.
 
 ## 6. Excerpt and Abstract Rules
 

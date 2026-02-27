@@ -19,14 +19,24 @@ permalink: /forum/
     <div class="board-grid">
       {% for post in all_posts %}
         <a href="{{ post.url | relative_url }}" class="board-card">
-          <p class="board-card__meta">
-            {{ post.date | date: "%B %d, %Y" }}
-          </p>
-          <p class="board-card__title">{{ post.title }}</p>
-          {% if post.excerpt %}
-            <p class="board-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+          {% if post.header_image %}
+            <div class="board-card__media">
+              <img src="{{ post.header_image | relative_url }}"
+                   alt="{{ post.header_image_alt | default: post.title | escape }}"
+                   class="board-card__image"
+                   loading="lazy">
+            </div>
           {% endif %}
-          <p class="board-card__author">{{ post.author }}</p>
+          <div class="board-card__content">
+            <p class="board-card__meta">
+              {{ post.date | date: "%B %d, %Y" }}
+            </p>
+            <p class="board-card__title">{{ post.title }}</p>
+            {% if post.excerpt %}
+              <p class="board-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+            {% endif %}
+            <p class="board-card__author">{{ post.author }}</p>
+          </div>
         </a>
       {% endfor %}
     </div>

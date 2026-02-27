@@ -10,6 +10,7 @@ Description:
   Extracts text from .docx or .pdf into ingest/working/ as:
     - <basename>.source.md
     - <basename>.meta.yml
+  Also extracts embedded images when possible.
 USAGE
 }
 
@@ -75,8 +76,10 @@ SAFE_BASE="$(printf '%s' "$BASENAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^
 SOURCE_MD="ingest/working/${SAFE_BASE}.source.md"
 META_YML="ingest/working/${SAFE_BASE}.meta.yml"
 TMP_TEXT="ingest/working/${SAFE_BASE}.tmp.txt"
+MEDIA_DIR="ingest/working/${SAFE_BASE}-media"
 
 warn_pdf="false"
+image_extract_note="none"
 
 extract_docx() {
   if ! command -v pandoc >/dev/null 2>&1; then
@@ -87,7 +90,10 @@ ERR
     exit 1
   fi
 
-  pandoc "$INPUT" -t gfm --wrap=none -o "$SOURCE_MD"
+  rm -rf "$MEDIA_DIR"
+  mkdir -p "$MEDIA_DIR"
+  pandoc "$INPUT" -t gfm --wrap=none --extract-media="$MEDIA_DIR" -o "$SOURCE_MD"
+  image_extract_note="docx_media_extract"
   augment_docx_horizontal_rules "$INPUT" "$SOURCE_MD"
 }
 
@@ -209,6 +215,15 @@ ERR
   } > "$SOURCE_MD"
   warn_pdf="true"
   rm -f "$TMP_TEXT"
+
+  if command -v pdfimages >/dev/null 2>&1; then
+    rm -rf "$MEDIA_DIR"
+    mkdir -p "$MEDIA_DIR"
+    pdfimages -all "$INPUT" "$MEDIA_DIR/pdf-image" >/dev/null 2>&1 || true
+    image_extract_note="pdf_media_extract"
+  else
+    image_extract_note="pdf_media_extract_unavailable_install_poppler"
+  fi
 }
 
 case "$EXT_LC" in
@@ -229,6 +244,10 @@ TITLE_GUESS="$(awk 'NF {print; exit}' "$SOURCE_MD" | sed -E 's/^#+\s*//; s/^\*+|
 
 WORD_COUNT="$(wc -w < "$SOURCE_MD" | tr -d ' ')"
 EXTRACTED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+IMAGE_COUNT=0
+if [[ -d "$MEDIA_DIR" ]]; then
+  IMAGE_COUNT="$(find "$MEDIA_DIR" -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o -iname '*.webp' -o -iname '*.tif' -o -iname '*.tiff' -o -iname '*.bmp' -o -iname '*.svg' \) | wc -l | tr -d ' ')"
+fi
 
 cat > "$META_YML" <<YAML
 source_file: "$INPUT_ABS"
@@ -240,10 +259,16 @@ title_guess: "$TITLE_GUESS"
 author_guess: ""
 word_count_estimate: $WORD_COUNT
 pdf_layout_warning: $warn_pdf
+media_dir: "$MEDIA_DIR"
+extracted_image_count: $IMAGE_COUNT
+image_extraction: "$image_extract_note"
 YAML
 
 echo "Created: $SOURCE_MD"
 echo "Created: $META_YML"
 if [[ "$warn_pdf" == "true" ]]; then
   echo "Warning: PDF extraction may contain layout noise. Review manually."
+fi
+if [[ "$IMAGE_COUNT" -gt 0 ]]; then
+  echo "Extracted images: $IMAGE_COUNT (see $MEDIA_DIR)"
 fi

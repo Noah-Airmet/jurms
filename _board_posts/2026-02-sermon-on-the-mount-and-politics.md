@@ -4,6 +4,8 @@ title:       "The Sermon on the Mount and the Politics We Practice"
 author:      "Josh Abbott"
 date:        2026-02-26
 excerpt:     A Latter-day Saint reflection on how the Sermon on the Mount should shape Christian political behavior more than algorithms, parties, or outrage-driven media habits.
+header_image: /assets/images/forum/sermon-on-the-mount.png
+header_image_alt: "Illustration of Jesus teaching the Sermon on the Mount with a modern city skyline in the distance."
 tags:
   - politics
   - discipleship

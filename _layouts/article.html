@@ -49,6 +49,18 @@ layout: default
   </div>
   {% endif %}
 
+  {% if page.header_image %}
+  <figure class="article-hero">
+    <img src="{{ page.header_image | relative_url }}"
+         alt="{{ page.header_image_alt | default: page.title | escape }}"
+         class="article-hero__image"
+         loading="eager">
+    {% if page.header_image_caption %}
+      <figcaption class="article-hero__caption">{{ page.header_image_caption }}</figcaption>
+    {% endif %}
+  </figure>
+  {% endif %}
+
   <!-- Body: PDF embed OR rendered Markdown -->
   {% if page.content_type == "pdf" and page.pdf_url %}
 
